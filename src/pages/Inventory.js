@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BsFillGridFill, BsList } from "react-icons/bs";
+import { FaFilter } from "react-icons/fa";
 import {
   DataManagementComponent,
   UnqVals4K,
@@ -61,10 +62,13 @@ const CarList = () => {
       <div className="toggle_view_bar">
         <div className="sorting-list--grid">
           <button onClick={() => handleView("grid")}>
-            <BsFillGridFill className="icon" />
+            <BsFillGridFill className="icon   " />
           </button>
           <button onClick={() => handleView("list")}>
-            <BsList className="icon" />
+            <BsList className="icon  " />
+          </button>
+          <button className="filter_icon" onClick={() => handleView("list")}>
+            <FaFilter className=" icon  " />
           </button>
         </div>
         <div className="toggle_option">

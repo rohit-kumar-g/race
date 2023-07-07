@@ -550,6 +550,7 @@ export const InventoryStyled = styled.div`
   }
   button {
     border: none;
+    background: ${({ theme }) => theme.colors.bgnav};
   }
   .icon {
     color: ${({ theme }) => theme.colors.bgbtn};
@@ -558,13 +559,18 @@ export const InventoryStyled = styled.div`
     position: relative;
     cursor: pointer;
   }
-  .sorting-list--grid {
-    padding: 0.8rem 1rem;
+  .filter_icon{
+
+    margin-left: auto;
+  } .sorting-list--grid {
+    background: ${({ theme }) => theme.colors.bgnav};
+    width: 100%;
+    max-width: 80rem;
+    padding: 0.8rem 3rem;
     border: none;
     display: flex;
     align-items: center;
     cursor: pointer;
-    display: flex;
     gap: 2rem;
   }
   .list-view-items {

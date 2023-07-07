@@ -707,6 +707,7 @@ export const CardListStyled = styled.div`
   }
 `;
 export const ProductFilterStyled = styled.div`
+min-width: 25rem;
   background: ${({ theme }) => theme.colors.bgnav};
   display: flex;
   flex-direction: column;
@@ -718,7 +719,7 @@ export const ProductFilterStyled = styled.div`
     overflow: hidden;
     text-overflow: clip;
   }
-  }
+  
 `;
 export const CardGridStyled = styled.div`
   & {

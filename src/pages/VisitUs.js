@@ -9,12 +9,12 @@ const VisitUs = () => {
           <div className="week_cont_2">
             <div className="days">
               <h2>Monday</h2>
-              <h2>Monday</h2>
-              <h2>Monday</h2>
-              <h2>Monday</h2>
-              <h2>Monday</h2>
-              <h2>Monday</h2>
-              <h2>Monday</h2>
+              <h2>Tuesday</h2>
+              <h2>Wednesday</h2>
+              <h2>Thursday</h2>
+              <h2>Friday</h2>
+              <h2>Saturday</h2>
+              <h2>Sunday</h2>
             </div>
             <div className="time">
               <h2>10:00am-7:00pm</h2>

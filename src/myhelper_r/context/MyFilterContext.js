@@ -83,7 +83,7 @@ export const MyFilterProvider = ({ children }) => {
           console.log(querySnapshot.size);
         });
       }
-    }, [selectedOptions]);
+    }, []);
   };
 
   GetDataFromFirestore();

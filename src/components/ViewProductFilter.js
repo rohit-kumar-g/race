@@ -4,9 +4,9 @@ import LoanCalc from "../pages/LoanCalc";
 import MultiSelectfilter from "../components/CardMultiSelectFilter";
 import { useMyProductContext } from "../myhelper_r/context/MyProductcontext";
 const ProductFilter = ({ color, year, make, model }) => {
-  const handleSelectionChange = (selectedOptions) => {
-    console.log("Selected options:", selectedOptions);
-  };
+  // const handleSelectionChange = (selectedOptions) => {
+  //   console.log("Selected options:", selectedOptions);
+  // };
   const {setFilterView} =useMyProductContext();
   return (
     <ProductFilterStyled>

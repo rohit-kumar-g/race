@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { MultiSelectDropdownStyled } from "../styles/AllStyles";
 import { useMyFilterContext } from "../myhelper_r/context/MyFilterContext";
-
 const MultiSelectfilter = ({ fieldName, filter_title, options }) => {
   const {
     selectedOptions,

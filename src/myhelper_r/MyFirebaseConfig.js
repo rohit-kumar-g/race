@@ -80,23 +80,23 @@ export const UnqVals4K = (jsonData, key) => {
   });
   return Array.from(uniqueValues);
 };
-export const DataManagementComponent = () => {
-  // const [colorValues, setColorValues] = useState([]);
+// export const DataManagementComponent = () => {
+//   const [colorValues, setColorValues] = useState([]);
 
-  // Fetch data from Firestore on component mount
-  // useEffect(() => {
-  const fetchData = async () => {
-    const querySnapshot = await firestore
-      .collection("cars")
-      .where("color", "!=", "")
-      .get();
-    // console.log(querySnapshot,"query  ");
-    const values = querySnapshot.docs.map((doc) => doc.data().color);
-    // setColorValues(values);
-    // console.log("mdttccc",values);
-  };
+//   Fetch data from Firestore on component mount
+//   useEffect(() => {
+//   const fetchData = async () => {
+//     const querySnapshot = await firestore
+//       .collection("cars")
+//       .where("color", "!=", "")
+//       .get();
+//     console.log(querySnapshot,"query  ");
+//     const values = querySnapshot.docs.map((doc) => doc.data().color);
+//     setColorValues(values);
+//     console.log("mdttccc",values);
+//   };
 
-  fetchData();
+//   fetchData();
 
-  // }, []);
-};
+//   // }, []);
+// };

@@ -65,7 +65,7 @@ const CarForm = () => {
     return new Promise(async (resolve, reject) => {
       const uploadedImages = [];
       for (const file of files) {
-        let i = 1;
+        // let i = 1;
         try {
           const uploadTask = firestorage
             .ref(`${timeer}/${file.name}`)
@@ -77,7 +77,7 @@ const CarForm = () => {
                 (snapshot.bytesTransferred / snapshot.totalBytes) * 100
               );
               setImageUploadProgress(progress);
-              i++;
+              // i++;
               // console.log("Uploaded", file.name, i);
             },
             (error) => {
@@ -101,7 +101,7 @@ const CarForm = () => {
     return new Promise(async (resolve, reject) => {
       const uploadedImages = [];
       for (const file of files) {
-        let i = 1;
+        // let i = 1;
         try {
           const uploadTask = firestorage
             .ref(`${timeer}/${field}/${file.name}`)
@@ -113,7 +113,7 @@ const CarForm = () => {
                 (snapshot.bytesTransferred / snapshot.totalBytes) * 100
               );
               setImageUploadProgress(progress);
-              i++;
+              // i++;
               // console.log("Uploaded", file.name, i);
             },
             (error) => {

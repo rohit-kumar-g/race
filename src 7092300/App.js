@@ -3,7 +3,6 @@ import { GlobalStyle } from "./styles/GlobalStyle";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import VisitUs from "./pages/VisitUs";
 import Contact from "./pages/Contact.js";
 import LoanCalc from "./pages/LoanCalc";
 import Inventory from "./pages/Inventory";
@@ -51,15 +50,38 @@ function App() {
         <div id="main">
           <Header />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about-us" element={<About />} />
-            <Route path="/visit-us" element={<VisitUs />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/loan" element={<LoanCalc />} />
-            <Route path="/inventory" element={<Inventory />} />
-            <Route path="/warranty" element={<Warranty />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/car/:carId" element={<SingleCar />} />
+            <Route
+              path="/"
+              element={<Home />}
+            />
+            <Route
+              path="/about-us"
+              element={<About />}
+            />
+            <Route
+              path="/contact"
+              element={<Contact />}
+            />
+            <Route
+              path="/loan"
+              element={<LoanCalc />}
+            />
+            <Route
+              path="/inventory"
+              element={<Inventory />}
+            />
+            <Route
+              path="/warranty"
+              element={<Warranty />}
+            />
+            <Route
+              path="/admin"
+              element={<Admin />}
+            />
+            <Route
+              path="/car/:carId"
+              element={<SingleCar />}
+            />
           </Routes>
         </div>
         <Footer />

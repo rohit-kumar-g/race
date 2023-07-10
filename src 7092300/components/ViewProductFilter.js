@@ -1,7 +1,7 @@
 import React from "react";
 import { ProductFilterStyled } from "../styles/AllStyles";
 import LoanCalc from "../pages/LoanCalc";
-import MultiSelectDropdown from "./MultiSelectDropdown";
+import MultiSelectfilter from "../components/CardMultiSelectFilter";
 const ProductFilter = ({ color, year, make, model }) => {
   const handleSelectionChange = (selectedOptions) => {
     console.log("Selected options:", selectedOptions);
@@ -10,27 +10,26 @@ const ProductFilter = ({ color, year, make, model }) => {
     <ProductFilterStyled>
       <div>
         <h2>Filters</h2>
-        <MultiSelectDropdown
+        <MultiSelectfilter
+          fieldName={"year"}
           filter_title={"Year"}
           options={year}
-          onChange={handleSelectionChange}
         />
-        <MultiSelectDropdown
+        <MultiSelectfilter
+          fieldName={"make"}
           filter_title={"Make"}
           options={make}
-          onChange={handleSelectionChange}
         />
-        <MultiSelectDropdown
+        <MultiSelectfilter
+          fieldName={"model"}
           filter_title={"Model"}
           options={model}
-          onChange={handleSelectionChange}
         />
-        <MultiSelectDropdown
+        <MultiSelectfilter
+          fieldName={"color"}
           filter_title={"Colour"}
           options={color}
-          onChange={handleSelectionChange}
         />
-
         <LoanCalc />
       </div>
     </ProductFilterStyled>

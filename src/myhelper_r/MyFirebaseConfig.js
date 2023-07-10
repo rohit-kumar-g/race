@@ -26,7 +26,7 @@ export const addCarData = async (carData) => {
 export const getCarData = async () => {
   try {
     const carsCollection = firestore.collection("cars");
-    const snapshot = await carsCollection.orderBy("timestamp", "desc").get();
+    const snapshot = await carsCollection.get();
     const carData = snapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
@@ -35,7 +35,7 @@ export const getCarData = async () => {
     return carData;
   } catch (error) {
     console.error("Error fetching car data:", error);
-    return [];
+    return error;
   }
 };
 export const get5CarData = async () => {

@@ -543,8 +543,8 @@ export const InventoryStyled = styled.div`
   flex-direction: row;
   margin-inline: auto;
   margin-block: 2rem;
-  .inv_Menu_List_OR_Grid {
-    width: 80rem;
+  .iv_body {
+    width: 65vw;
     .sorting-list--grid {
       margin: 0rem;
       width: 100%;
@@ -559,17 +559,13 @@ export const InventoryStyled = styled.div`
       background: #fff;
     }
   }
-  .all_inv_items {
-    margin-inline: auto;
+  .desktop-view-inventory {
     display: grid;
-    grid-template-columns: 30rem auto;
+    grid-template-columns: 25vw auto;
     column-gap: 3rem;
   }
-  .btn_icon_iv {
+  button {
     border: none;
-    width: 4rem;
-    height: 3.5rem;
-    border-radius: 0.6rem;
     background: ${({ theme }) => theme.colors.bgnav};
   }
   .icon {
@@ -579,15 +575,7 @@ export const InventoryStyled = styled.div`
     position: relative;
     cursor: pointer;
   }
-  .view_toggle {
-    /* background: ${({ theme }) => theme.colors.bgbtn}; */
-    background: #000;
-    .icon {
-      color: ${({ theme }) => theme.colors.bgnav};
-    }
-  }
   .filter_icon {
-    display: none;
     margin-left: auto;
   }
   .sorting-list--grid {
@@ -606,46 +594,16 @@ export const InventoryStyled = styled.div`
     display: flex;
     flex-wrap: wrap;
   }
-  .close_filter_view {
-    display: none;
-  }
   @media (max-width: ${({ theme }) => theme.media.tab}) {
-    .all_inv_items {
-      display: block;
-    }
-    .filter_icon {
-      display: inline;
-      margin-left: auto;
-    }
-    .inv_veh_filter_menu {
-      display: none;
-    }
-    .active_filters {
-      display: block;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: scroll;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 9999;
-      background: snow;
-      .close_filter_view {
-        display: block;
-        margin: 4rem 3rem 0 0;
-        text-align: end;
-        right: 0;
-        padding: 2rem;
-        font-size: 2.4rem;
-      }
-    }
-    .inv_Menu_List_OR_Grid {
-      width: 90vw;
-      height: 100vh;
-    }
     .sorting-list--grid {
       margin-inline: auto;
+    }
+    .iv_body {
+    width: 100vw;
+      height: 100vh;
+   
+      margin-left: 4rem;
+    
     }
   }
 `;
@@ -884,6 +842,77 @@ export const CardGridStyled = styled.div`
     font-weight: bold;
   }
 `;
+export const MobCardViewStyled = styled.div`
+  width: 100%;
+  .info_data {
+    font-size: 2rem;
+    display: inline-block;
+    /* width: 1em; */
+    padding: 0.5rem;
+    /* margin-top: 1rem; */
+  }
+  .centered-image {
+    width: 100%;
+    height: 100%;
+  }
+  .btn_con {
+    margin-block: auto;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 5rem;
+  }
+  .info_text {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    /* grid-template-columns: 1fr auto 1fr; */
+  }
+  .con_1 {
+    margin-block: 2rem;
+    margin-inline: auto;
+    width: 90%;
+    border-radius: 2rem;
+    overflow: hidden;
+    background: ${({ theme }) => theme.colors.bgnav};
+    box-shadow: ${({ theme }) => theme.colors.boxoutshadow};
+  }
+  .con_2 {
+    display: flex;
+    flex-direction: row;
+  }
+  .info_con {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  .img_con {
+    border-top-right-radius: 2rem;
+    overflow: hidden;
+    display: inline-block;
+    width: 90%;
+    aspect-ratio: 4/3;
+  }
+  .price_info {
+    margin-left: 2rem;
+    color: ${({ theme }) => theme.colors.xtnav1};
+    font-size: 2.4rem;
+  }
+  .con_title {
+    color: ${({ theme }) => theme.colors.xtnav1};
+    padding: 0.5rem;
+    font-size: 2.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    color: ${({ theme }) => theme.colors.xtnav1};
+    padding: 0.5rem 1.5rem;
+    height: 5rem;
+    font-size: 3rem;
+  }
+`;
 export const AboutStyled = styled.div`
   width: 90%;
   padding: 2rem;
@@ -897,33 +926,6 @@ export const AboutStyled = styled.div`
   }
   h3 {
     color: ${({ theme }) => theme.colors.xtfoot2};
-  }
-`;
-export const VisitStyled = styled.div`
-  .con_1,
-  .week_cont_2 {
-    display: grid;
-    width: 100%;
-    padding: 2rem;
-    grid-template-columns: 40% 60%;
-    background: ${({ theme }) => theme.colors.bgnav};
-  }
-  .visit_us_cont_2 {
-    color: ${({ theme }) => theme.colors.xtnav1};
-    padding: 1.5rem 0 0 2.5rem;
-    font-size: 2.4rem;
-  }
-  .map_con_3 {
-    aspect-ratio: 4/3;
-  }
-  .map_visit_us {
-    height: 100%;
-    width: 100%;
-  }
-  @media (max-width: ${({ theme }) => theme.media.mobile}) {
-    .con_1 {
-      display: block;
-    }
   }
 `;
 export const OverflowCardStyled = styled.div`

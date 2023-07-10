@@ -27,22 +27,19 @@ footer{
     border-top:  ${({ theme }) => theme.colors.bdrline2};
 }
 h1 {
-    color: ${({ theme }) => theme.colors.xtblue};
-    line-height: 4rem;
+    color: ${({ theme }) => theme.colors.xtheading};
     font-size: 3.6rem;
     font-weight: 600;
 }
 h2 {
-    color: ${({ theme }) => theme.colors.xtblue};
-    line-height: 3.2rem;
+    color: ${({ theme }) => theme.colors.xtheading};
     font-size: 2.4rem;
     font-weight: 600;
-    white-space: nowrap;
+    white-space: normal;
 }
 h3 {
-    color: ${({ theme }) => theme.colors.xtblue};
+    color: ${({ theme }) => theme.colors.xtheading};
     font-size: 1.8rem;
-    line-height: 3rem;
     font-weight: 600;
 }
 p, button {
@@ -51,6 +48,7 @@ p, button {
     line-height: 1.5;
     font-weight:400;
 }
+
 a {
     text-decoration: none;
 }

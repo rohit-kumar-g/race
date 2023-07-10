@@ -184,6 +184,7 @@ export const HeaderStyledWrap = styled.header`
       padding: 0 3.2rem;
     }
     .logo {
+      margin-left: 3.5rem;
       height: 8rem;
     }
   }

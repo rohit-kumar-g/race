@@ -1,9 +1,10 @@
 import { createGlobalStyle } from "styled-components";
-export const GlobalStyle = createGlobalStyle` * {
-    margin: 0;
-    padding: 0;
+export const GlobalStyle = createGlobalStyle`
+* {
+    margin:0;
+    padding:0;
     box-sizing: border-box;
-    font-family: Roboto, Helvetica Neue, Arial, sans-serif, "Work Sans";
+    font-family: Roboto,Helvetica Neue,Arial,sans-serif, "Work Sans";
 }
 html {
     font-size: 62.5%;
@@ -11,22 +12,19 @@ html {
     /* 1rem = 10px */
     overflow-x: hidden;
 }
-#main {
+#main{
     min-width: 100vw;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }
 body {
-    background:${({ theme }) => theme.colors.bgbody}
-;
+    background:${({ theme }) => theme.colors.bgbody}; 
 }
-footer {
+footer{
     margin-top: auto;
-    background:${({ theme }) => theme.colors.bgfooter}
-;
-border-top: ${({ theme }) => theme.colors.bdrline2}
-;
+    background:${({ theme }) => theme.colors.bgfooter};
+    border-top:  ${({ theme }) => theme.colors.bdrline2};
 }
 h1 {
     color: ${({ theme }) => theme.colors.xtblue}
@@ -95,7 +93,6 @@ box-shadow: ${({ theme }) => theme.colors.shdbtnxt}
             min-height: 30rem;
             height: 100%;  
         }
-        
     }
 }
 `;

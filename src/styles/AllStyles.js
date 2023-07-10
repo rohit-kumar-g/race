@@ -556,7 +556,7 @@ export const InventoryStyled = styled.div`
     .loading_bg {
       margin-top: 2rem;
       width: 100%;
-      height: 100%;
+      min-height: 100vh;
       max-width: 80rem;
       background: #fff;
     }
@@ -628,7 +628,7 @@ export const InventoryStyled = styled.div`
       top: 0;
       left: 0;
       width: 100vw;
-      height: 100vh;
+      min-height: 100vh;
       overflow: scroll;
       background-color: rgba(0, 0, 0, 0.5);
       z-index: 9999;
@@ -644,7 +644,7 @@ export const InventoryStyled = styled.div`
     }
     .inv_Menu_List_OR_Grid {
       width: 90vw;
-      height: 100vh;
+      min-height: 100vh;
     }
     .sorting-list--grid {
       margin-inline: auto;

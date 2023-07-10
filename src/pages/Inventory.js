@@ -33,7 +33,7 @@ const CarList = () => {
         </div>
         <div className="inv_Menu_List_OR_Grid">
           <ViewInvMenu />
-          {(isLoading || isError) && <div className="loading_bg"></div>}
+          <div className={isLoading || isError ? "loading_bg" : ""}></div>
           <div className="toggle_option">
             {grid_view ? (
               <GridViewCar cars={cars} />

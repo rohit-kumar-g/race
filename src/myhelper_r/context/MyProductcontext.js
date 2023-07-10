@@ -9,7 +9,7 @@ const initialState = {
   model: [],
   make: [],
   year: [],
-  totalItems:0,
+  totalItems: 0,
   grid_view: false,
   filter_view: false,
   isLoading: true,
@@ -27,10 +27,10 @@ const MyProductsProvider = ({ children }) => {
         if (cars.length < 1) {
           dispatch({ type: "API_ERROR" });
         }
-        console.log("pfpro", cars.length);
+        // console.log("pfpro", cars.length);
         dispatch({ type: "SET_FILTER_DATA", payload: cars });
       } catch (error) {
-        console.log("pfpro", error);
+        // console.log("pfpro", error);
         dispatch({ type: "API_ERROR" });
       }
     };
@@ -51,7 +51,9 @@ const MyProductsProvider = ({ children }) => {
     return dispatch({ type: "SET_LIST_VIEW" });
   };
   return (
-    <MyProductsContext.Provider value={{ ...state, setGridView, setListView ,setFilterView}}>
+    <MyProductsContext.Provider
+      value={{ ...state, setGridView, setListView, setFilterView }}
+    >
       {children}
     </MyProductsContext.Provider>
   );

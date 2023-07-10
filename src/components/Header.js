@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <HeaderStyledWrap>
       <div className="site">
-        <NavLink to="/admin">
+        <NavLink to="/">
           <img
             className="logo"
             src="./images/logo-png.png"

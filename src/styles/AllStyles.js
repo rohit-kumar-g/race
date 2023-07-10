@@ -156,6 +156,7 @@ export const NavXtStyled = styled.nav`
     #menu-outline {
       position: absolute;
       left: 1.5rem;
+      
     }
   }
 `;
@@ -183,6 +184,7 @@ export const HeaderStyledWrap = styled.header`
       padding: 0 3.2rem;
     }
     .logo {
+      margin-left: 3rem;
       height: 8rem;
     }
   }
@@ -795,6 +797,12 @@ export const ProductFilterStyled = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: clip;
+  }
+  @media (max-width: ${({ theme }) => theme.media.tab}) {
+    & {
+      width: 80%;
+      margin-inline: auto;
+    }
   }
 `;
 export const CardGridStyled = styled.div`

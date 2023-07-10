@@ -78,7 +78,7 @@ const CarForm = () => {
               );
               setImageUploadProgress(progress);
               i++;
-              console.log("Uploaded", file.name, i);
+              // console.log("Uploaded", file.name, i);
             },
             (error) => {
               console.error("Error uploading image:", error);
@@ -114,7 +114,7 @@ const CarForm = () => {
               );
               setImageUploadProgress(progress);
               i++;
-              console.log("Uploaded", file.name, i);
+              // console.log("Uploaded", file.name, i);
             },
             (error) => {
               console.error("Error uploading image:", error);
@@ -156,7 +156,7 @@ const CarForm = () => {
         timestamp: timeer,
       };
       addCarData(carDataWithImages);
-      console.log("Car data saved");
+      // console.log("Car data saved");
       setCarData({
         timestamp: "",
         title: "",

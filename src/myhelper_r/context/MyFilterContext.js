@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 // import firebase from "firebase/app";
-import {firestore} from "../MyFirebaseConfig";
+import { firestore } from "../MyFirebaseConfig";
 
 // Create the context
 const MyFilterContext = createContext();
@@ -68,7 +68,7 @@ export const MyFilterProvider = ({ children }) => {
           // Check if options is not an empty array and fieldName exists
           if (options.length > 0 && fieldName) {
             query = query.where(fieldName, "in", options);
-            // console.log("query11" , fieldName, options);
+            // // console.log("query11" , fieldName, options);
           }
         });
 
@@ -78,9 +78,9 @@ export const MyFilterProvider = ({ children }) => {
           // Process the query snapshot here
           // querySnapshot.forEach((doc) => {
           //   // Access document data using doc.data()
-          //   console.log(doc.data());
+          //   // console.log(doc.data());
           // });
-          console.log(querySnapshot.size);
+          // console.log(querySnapshot.size);
         });
       }
     }, []);

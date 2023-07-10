@@ -17,7 +17,7 @@ export const addCarData = async (carData) => {
   try {
     const carsCollection = firestore.collection("cars");
     await carsCollection.add(carData);
-    console.log("Car data added successfully!");
+    // console.log("Car data added successfully!");
   } catch (error) {
     console.error("Error adding car data:", error);
   }
@@ -31,7 +31,7 @@ export const getCarData = async () => {
       id: doc.id,
       ...doc.data(),
     }));
-    console.log(carData, "carrradataa");
+    // console.log(carData, "carrradataa");
     return carData;
   } catch (error) {
     console.error("Error fetching car data:", error);
@@ -49,7 +49,7 @@ export const get5CarData = async () => {
       id: doc.id,
       ...doc.data(),
     }));
-    console.log(carData,"jlkjl");
+    // console.log(carData,"jlkjl");
     return carData;
   } catch (error) {
     console.error("Error fetching car data:", error);
@@ -70,33 +70,33 @@ export const getCarDataindv = async (carId) => {
     throw error;
   }
 };
-export const UnqVals4K =(jsonData, key)=> {
-    const uniqueValues = new Set();
-    // Extract unique values
-    jsonData.forEach((item) => {
-      if (item[key]) {
-        uniqueValues.add(item[key]);
-      };
-    });
-    return Array.from(uniqueValues);
-  };
+export const UnqVals4K = (jsonData, key) => {
+  const uniqueValues = new Set();
+  // Extract unique values
+  jsonData.forEach((item) => {
+    if (item[key]) {
+      uniqueValues.add(item[key]);
+    }
+  });
+  return Array.from(uniqueValues);
+};
 export const DataManagementComponent = () => {
   // const [colorValues, setColorValues] = useState([]);
 
   // Fetch data from Firestore on component mount
   // useEffect(() => {
-    const fetchData = async () => {
-      const querySnapshot = await firestore
-        .collection("cars")
-        .where("color", "!=", "")
-        .get();
-      console.log(querySnapshot,"query  ");
-      const values = querySnapshot.docs.map((doc) => doc.data().color);
-      // setColorValues(values);
-      console.log("mdttccc",values);
-    };
+  const fetchData = async () => {
+    const querySnapshot = await firestore
+      .collection("cars")
+      .where("color", "!=", "")
+      .get();
+    // console.log(querySnapshot,"query  ");
+    const values = querySnapshot.docs.map((doc) => doc.data().color);
+    // setColorValues(values);
+    // console.log("mdttccc",values);
+  };
 
-    fetchData();
+  fetchData();
 
   // }, []);
 };

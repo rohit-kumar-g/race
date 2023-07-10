@@ -11,7 +11,7 @@ const MultiSelectfilter = ({ fieldName, filter_title, options }) => {
     handleToggle,
   } = useMyFilterContext();
   // useEffect(() => {
-  //   console.log(selectedOptions);
+  //   // console.log(selectedOptions);
   // }, [selectedOptions]);
   const selectedOptionsForField = selectedOptions[fieldName] || [];
   return (

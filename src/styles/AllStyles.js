@@ -546,7 +546,7 @@ export const InventoryStyled = styled.div`
   margin-inline: auto;
   margin-block: 2rem;
   .inv_Menu_List_OR_Grid {
-    width: 80rem;
+    width: 90rem;
     .sorting-list--grid {
       margin: 0rem;
       width: 100%;
@@ -630,7 +630,6 @@ export const InventoryStyled = styled.div`
       width: 100vw;
       min-height: 100vh;
       overflow: scroll;
-      background-color: rgba(0, 0, 0, 0.5);
       z-index: 9999;
       background: snow;
       .close_filter_view {
@@ -808,7 +807,7 @@ export const ProductFilterStyled = styled.div`
 export const CardGridStyled = styled.div`
   & {
     width: 33%;
-    min-width: 32rem;
+    min-width: 30rem;
     display: inline-block;
   }
   .price_info {
@@ -890,6 +889,12 @@ export const CardGridStyled = styled.div`
     padding-left: 1rem;
     margin-top: 1rem;
     font-weight: bold;
+  }
+  
+  @media (max-width: ${({ theme }) => theme.media.tab}) {
+    &{
+    min-width: auto:
+    }
   }
 `;
 export const AboutStyled = styled.div`

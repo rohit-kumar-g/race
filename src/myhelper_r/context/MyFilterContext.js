@@ -1,105 +1,184 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
-// import firebase from "firebase/app";
-import { firestore } from "../MyFirebaseConfig";
+import React, { createContext, useContext, useReducer, useEffect } from "react";
+import { useMyProductContext } from "./MyProductcontext";
 
-// Create the context
 const MyFilterContext = createContext();
 
-// Create a custom hook to access the context
 export const useMyFilterContext = () => useContext(MyFilterContext);
 
-// Create the context provider component
+const initialState = {
+  selectedOptions: {},
+  selectedCompare: {},
+  isOpen: {},
+  currentPage: 1,
+  totalPages: 0,
+  documents: [],
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "SET_SELECTED_OPTIONS":
+      return { ...state, selectedOptions: action.payload };
+    case "SET_SELECTED_COMPARE":
+      return { ...state, selectedCompare: action.payload };
+    case "SET_IS_OPEN":
+      return { ...state, isOpen: action.payload };
+    case "SET_CURRENT_PAGE":
+      console.log("tpCURR", action.payload);
+      return { ...state, currentPage: action.payload };
+    case "SET_TOTAL_PAGES":
+      
+      console.log("tpAGE", action.payload);
+      return { ...state, totalPages: action.payload };
+    case "SET_DOCUMENTS":
+      return { ...state, documents: action.payload };
+    default:
+      return state;
+  }
+};
+
 export const MyFilterProvider = ({ children }) => {
-  const [selectedOptions, setSelectedOptions] = useState({});
-  const [isOpen, setIsOpen] = useState({});
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const {
+    selectedOptions,
+    selectedCompare,
+    isOpen,
+    currentPage,
+    totalPages,
+    documents,
+  } = state;
+  const pageSize = 12;
+  const{ cars} = useMyProductContext();
+  // useEffect(() => {
+  //   // const collectionRef = firestore.collection("cars");
+  //   // let query = collectionRef.orderBy("timestamp", "desc");
+  //   const unsubscribe = ((snapshot) => {
+  //     const totalItems = snapshot.size;
+  //     const totalPageCount = Math.ceil(totalItems / pageSize);
+
+  //     // Get the documents for the current page
+  //     const start = (currentPage - 1) * pageSize;
+  //     const end = start + pageSize;
+  //     const docs = snapshot.docs.slice(start, end).map((doc) => doc.data());
+
+  //     dispatch({ type: "SET_TOTAL_PAGES", payload: totalPageCount });
+  //     dispatch({ type: "SET_DOCUMENTS", payload: docs });
+  //   });
+
+  //   return () => {
+  //     unsubscribe();
+  //   };
+  // }, [currentPage]);
+
+  useEffect(() => {
+    const Paginate = () => {
+      const totalItems = cars.length;
+      const totalPageCount = Math.ceil(totalItems / pageSize);
+
+      // Get the documents for the current page
+      const start = (currentPage - 1) * pageSize;
+      const end = start + pageSize;
+      const docs = cars.slice(start, end);
+
+      dispatch({ type: "SET_TOTAL_PAGES", payload: totalPageCount });
+      dispatch({ type: "SET_DOCUMENTS", payload: docs });
+    };
+
+    Paginate();
+  }, [cars, currentPage]);
+
+  const goToPage = (page) => {
+    dispatch({ type: "SET_CURRENT_PAGE", payload: page });
+  };
+
+  const goToPreviousPage = () => {
+    const prevPage = Math.max(currentPage - 1, 1);
+    dispatch({ type: "SET_CURRENT_PAGE", payload: prevPage });
+  };
+
+  const goToNextPage = () => {
+    const nextPage = Math.min(currentPage + 1, totalPages);
+    dispatch({ type: "SET_CURRENT_PAGE", payload: nextPage });
+    
+      console.log("tpQ", currentPage);
+  };
 
   const handleToggle = (fieldName) => {
-    setIsOpen((prevIsOpen) => ({
-      ...prevIsOpen,
-      [fieldName]: !prevIsOpen[fieldName],
-    }));
+    dispatch({
+      type: "SET_IS_OPEN",
+      payload: { ...isOpen, [fieldName]: !isOpen[fieldName] },
+    });
   };
 
   const handleOptionClick = (option, fieldName) => {
-    setSelectedOptions((prevSelectedOptions) => {
-      const updatedOptions = { ...prevSelectedOptions };
+    const updatedOptions = { ...selectedOptions };
 
-      if (updatedOptions[fieldName]) {
-        if (updatedOptions[fieldName].includes(option)) {
-          updatedOptions[fieldName] = updatedOptions[fieldName].filter(
-            (item) => item !== option
-          );
-        } else {
-          updatedOptions[fieldName] = [...updatedOptions[fieldName], option];
-        }
+    if (updatedOptions[fieldName]) {
+      if (updatedOptions[fieldName].includes(option)) {
+        updatedOptions[fieldName] = updatedOptions[fieldName].filter(
+          (item) => item !== option
+        );
       } else {
-        updatedOptions[fieldName] = [option];
+        updatedOptions[fieldName] = [...updatedOptions[fieldName], option];
       }
+    } else {
+      updatedOptions[fieldName] = [option];
+    }
 
-      return updatedOptions;
-    });
+    dispatch({ type: "SET_SELECTED_OPTIONS", payload: updatedOptions });
   };
 
   const handleSelectAll = (options, fieldName) => {
-    setSelectedOptions((prevSelectedOptions) => {
-      const updatedOptions = { ...prevSelectedOptions };
-      updatedOptions[fieldName] = options;
-      return updatedOptions;
-    });
+    const updatedOptions = { ...selectedOptions };
+    updatedOptions[fieldName] = options;
+    dispatch({ type: "SET_SELECTED_OPTIONS", payload: updatedOptions });
   };
 
   const handleClearSelection = (fieldName) => {
-    setSelectedOptions((prevSelectedOptions) => {
-      const updatedOptions = { ...prevSelectedOptions };
-      updatedOptions[fieldName] = [];
-      return updatedOptions;
-    });
+    const updatedOptions = { ...selectedOptions };
+    updatedOptions[fieldName] = [];
+    dispatch({ type: "SET_SELECTED_OPTIONS", payload: updatedOptions });
   };
 
-  const GetDataFromFirestore = () => {
-    useEffect(() => {
-      // Check if selectedOptions is not an empty object
-      if (Object.keys(selectedOptions).length !== 0) {
-        // const firestore = firebase.firestore();
-        let query = firestore.collection("cars");
+  const handleCompareClick = (car) => {
+    const updatedOptions = { ...selectedCompare };
 
-        // Build the query based on selectedOptions
-        Object.entries(selectedOptions).forEach(([fieldName, options]) => {
-          // Check if options is not an empty array and fieldName exists
-          if (options.length > 0 && fieldName) {
-            query = query.where(fieldName, "in", options);
-            // // console.log("query11" , fieldName, options);
-          }
-        });
-
-        // query = query.orderBy("timestamp", "desc");
-
-        query.get().then((querySnapshot) => {
-          // Process the query snapshot here
-          // querySnapshot.forEach((doc) => {
-          //   // Access document data using doc.data()
-          //   // console.log(doc.data());
-          // });
-          // console.log(querySnapshot.size);
-        });
+    if (updatedOptions[car.id]) {
+      delete updatedOptions[car.id];
+    } else {
+      const compareCount = Object.keys(updatedOptions).length;
+      if (compareCount < 3) {
+        updatedOptions[car.id] = car;
+      } else {
+        console.log("You have already selected 3 cars.");
       }
-    }, []);
+    }
+
+    dispatch({ type: "SET_SELECTED_COMPARE", payload: updatedOptions });
   };
 
-  GetDataFromFirestore();
+  const contextValue = {
+    selectedOptions,
+    selectedCompare,
+    isOpen,
+    currentPage,
+    totalPages,
+    documents,
+    goToPage,
+    goToPreviousPage,
+    goToNextPage,
+    handleToggle,
+    handleOptionClick,
+    handleSelectAll,
+    handleClearSelection,
+    handleCompareClick,
+  };
 
   return (
-    <MyFilterContext.Provider
-      value={{
-        selectedOptions,
-        handleOptionClick,
-        handleSelectAll,
-        handleClearSelection,
-        isOpen,
-        handleToggle,
-      }}
-    >
+    <MyFilterContext.Provider value={contextValue}>
       {children}
     </MyFilterContext.Provider>
   );
 };
+
+export const MyFilterConsumer = MyFilterContext.Consumer;
+export default MyFilterContext;

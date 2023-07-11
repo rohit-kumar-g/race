@@ -1,16 +1,18 @@
 import React from "react";
 import { CardListStyled } from "../styles/AllStyles";
 import { NavLink } from "react-router-dom";
+import { useMyFilterContext } from "../myhelper_r/context/MyFilterContext";
 const CardList = ({ car, index }) => {
+  const { handleCompareClick, errorMessage ,setErrorMessage} = useMyFilterContext();
   return (
     <CardListStyled>
       <div className="con_1" key={index}>
         <div className="con_2">
-            <div className="img_con">
-          <NavLink to={`/car/${car.id}`}>
+          <div className="img_con">
+            <NavLink to={`/car/${car.id}`}>
               <img className="centered-image" src={car.mainimages} alt="" />
-          </NavLink>
-            </div>
+            </NavLink>
+          </div>
           <div className="con_3">
             <NavLink to={`/car/${car.id}`}>
               <div className="con_title">
@@ -49,10 +51,23 @@ const CardList = ({ car, index }) => {
                   {"$ "}
                   {car.price}{" "}
                 </div>
-                <div className="compare">
-                  <input className="checkbox_compare" type="checkbox"/>{" "}
-                   Compare
+                <div
+                  className="compare"
+                  onClick={() => handleCompareClick(car)}
+                >
+                  <input className="checkbox_compare" type="checkbox" /> Compare
                 </div>
+                {errorMessage && (
+                  <div className="popup">
+                    <span className="popup-content">{errorMessage}</span>
+                    <span
+                      className="popup-close"
+                      onClick={() => setErrorMessage("")}
+                    >
+                      &times;
+                    </span>
+                  </div>
+                )}
                 <NavLink to={`/car/${car.id}`}>
                   <div className="btn_xt"> View Offer</div>
                 </NavLink>

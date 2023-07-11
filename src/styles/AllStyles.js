@@ -806,7 +806,7 @@ export const ProductFilterStyled = styled.div`
 export const CardGridStyled = styled.div`
   & {
     width: 33%;
-    min-width: 30rem;
+    min-width: auto;
     display: inline-block;
   }
   .price_info {

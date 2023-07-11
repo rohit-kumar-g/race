@@ -889,7 +889,7 @@ export const CardGridStyled = styled.div`
     margin-top: 1rem;
     font-weight: bold;
   }
-  @media (max-width: ${({ theme }) => theme.media.tab}) {
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
     & {
       min-width: 32rem;
     }

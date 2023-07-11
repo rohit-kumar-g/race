@@ -891,7 +891,7 @@ export const CardGridStyled = styled.div`
   }
   @media (max-width: ${({ theme }) => theme.media.tab}) {
     & {
-      min-width: auto;
+      min-width: 32rem;
     }
   }
 `;

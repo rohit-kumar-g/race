@@ -157,7 +157,6 @@ export const NavXtStyled = styled.nav`
       position: absolute;
       left: 1.5rem;
       margin-right: 3rem;
-      
     }
   }
 `;
@@ -890,10 +889,9 @@ export const CardGridStyled = styled.div`
     margin-top: 1rem;
     font-weight: bold;
   }
-  
   @media (max-width: ${({ theme }) => theme.media.tab}) {
-    &{
-    min-width: auto:
+    & {
+      min-width: auto;
     }
   }
 `;

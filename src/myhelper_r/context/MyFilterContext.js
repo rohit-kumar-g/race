@@ -1,19 +1,16 @@
 import React, { createContext, useContext, useReducer, useEffect } from "react";
 import { useMyProductContext } from "./MyProductcontext";
-
 const MyFilterContext = createContext();
-
 export const useMyFilterContext = () => useContext(MyFilterContext);
-
 const initialState = {
   selectedOptions: {},
   selectedCompare: {},
+  filtered_items: 0,
   isOpen: {},
   currentPage: 1,
   totalPages: 0,
   documents: [],
 };
-
 const reducer = (state, action) => {
   switch (action.type) {
     case "SET_SELECTED_OPTIONS":
@@ -22,11 +19,13 @@ const reducer = (state, action) => {
       return { ...state, selectedCompare: action.payload };
     case "SET_IS_OPEN":
       return { ...state, isOpen: action.payload };
+    case "SET_FILTERED_ITEMS":
+      console.log("SET_FILTERED_ITEMS", action.payload);
+      return { ...state, filtered_items: action.payload };
     case "SET_CURRENT_PAGE":
       console.log("tpCURR", action.payload);
       return { ...state, currentPage: action.payload };
     case "SET_TOTAL_PAGES":
-      
       console.log("tpAGE", action.payload);
       return { ...state, totalPages: action.payload };
     case "SET_DOCUMENTS":
@@ -35,83 +34,83 @@ const reducer = (state, action) => {
       return state;
   }
 };
-
 export const MyFilterProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const {
     selectedOptions,
     selectedCompare,
+    filtered_items,
     isOpen,
     currentPage,
     totalPages,
     documents,
   } = state;
   const pageSize = 12;
-  const{ cars} = useMyProductContext();
+  const { cars } = useMyProductContext();
   // useEffect(() => {
   //   // const collectionRef = firestore.collection("cars");
   //   // let query = collectionRef.orderBy("timestamp", "desc");
   //   const unsubscribe = ((snapshot) => {
   //     const totalItems = snapshot.size;
   //     const totalPageCount = Math.ceil(totalItems / pageSize);
-
   //     // Get the documents for the current page
   //     const start = (currentPage - 1) * pageSize;
   //     const end = start + pageSize;
   //     const docs = snapshot.docs.slice(start, end).map((doc) => doc.data());
-
   //     dispatch({ type: "SET_TOTAL_PAGES", payload: totalPageCount });
   //     dispatch({ type: "SET_DOCUMENTS", payload: docs });
   //   });
-
   //   return () => {
   //     unsubscribe();
   //   };
   // }, [currentPage]);
-
   useEffect(() => {
     const Paginate = () => {
       const totalItems = cars.length;
       const totalPageCount = Math.ceil(totalItems / pageSize);
-
       // Get the documents for the current page
       const start = (currentPage - 1) * pageSize;
       const end = start + pageSize;
-      const docs = cars.slice(start, end);
+    let filteredCars = [...cars]; // Make a copy of the original cars array
 
+    for (const field in selectedOptions) {
+      const options = selectedOptions[field];
+
+      if (options && options.length !== 0) {
+        filteredCars = filteredCars.filter((car) =>
+          options.includes(car[field])
+        );
+      }
+    } 
+    console.log(filteredCars,"no");
+    dispatch({ type: "SET_FILTERED_ITEMS", payload: filteredCars.length });
+      const docs = filteredCars.slice(start, end);
+      
       dispatch({ type: "SET_TOTAL_PAGES", payload: totalPageCount });
       dispatch({ type: "SET_DOCUMENTS", payload: docs });
     };
-
     Paginate();
-  }, [cars, currentPage]);
-
+  }, [cars, currentPage, selectedOptions]);
   const goToPage = (page) => {
     dispatch({ type: "SET_CURRENT_PAGE", payload: page });
   };
-
   const goToPreviousPage = () => {
     const prevPage = Math.max(currentPage - 1, 1);
     dispatch({ type: "SET_CURRENT_PAGE", payload: prevPage });
   };
-
   const goToNextPage = () => {
     const nextPage = Math.min(currentPage + 1, totalPages);
     dispatch({ type: "SET_CURRENT_PAGE", payload: nextPage });
-    
-      console.log("tpQ", currentPage);
+    console.log("tpQ", currentPage);
   };
-
   const handleToggle = (fieldName) => {
     dispatch({
       type: "SET_IS_OPEN",
       payload: { ...isOpen, [fieldName]: !isOpen[fieldName] },
     });
   };
-
   const handleOptionClick = (option, fieldName) => {
     const updatedOptions = { ...selectedOptions };
-
     if (updatedOptions[fieldName]) {
       if (updatedOptions[fieldName].includes(option)) {
         updatedOptions[fieldName] = updatedOptions[fieldName].filter(
@@ -123,25 +122,20 @@ export const MyFilterProvider = ({ children }) => {
     } else {
       updatedOptions[fieldName] = [option];
     }
-
     dispatch({ type: "SET_SELECTED_OPTIONS", payload: updatedOptions });
   };
-
   const handleSelectAll = (options, fieldName) => {
     const updatedOptions = { ...selectedOptions };
     updatedOptions[fieldName] = options;
     dispatch({ type: "SET_SELECTED_OPTIONS", payload: updatedOptions });
   };
-
   const handleClearSelection = (fieldName) => {
     const updatedOptions = { ...selectedOptions };
     updatedOptions[fieldName] = [];
     dispatch({ type: "SET_SELECTED_OPTIONS", payload: updatedOptions });
   };
-
   const handleCompareClick = (car) => {
     const updatedOptions = { ...selectedCompare };
-
     if (updatedOptions[car.id]) {
       delete updatedOptions[car.id];
     } else {
@@ -152,13 +146,12 @@ export const MyFilterProvider = ({ children }) => {
         console.log("You have already selected 3 cars.");
       }
     }
-
     dispatch({ type: "SET_SELECTED_COMPARE", payload: updatedOptions });
   };
-
   const contextValue = {
     selectedOptions,
     selectedCompare,
+    filtered_items,
     isOpen,
     currentPage,
     totalPages,
@@ -172,13 +165,11 @@ export const MyFilterProvider = ({ children }) => {
     handleClearSelection,
     handleCompareClick,
   };
-
   return (
     <MyFilterContext.Provider value={contextValue}>
       {children}
     </MyFilterContext.Provider>
   );
 };
-
 export const MyFilterConsumer = MyFilterContext.Consumer;
 export default MyFilterContext;

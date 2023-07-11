@@ -2,14 +2,20 @@ import React from "react";
 import { BsFillGridFill, BsList } from "react-icons/bs";
 import { BiFilterAlt } from "react-icons/bi";
 import { useMyProductContext } from "../myhelper_r/context/MyProductcontext";
+import { useMyFilterContext } from "../myhelper_r/context/MyFilterContext";
 const ViewInvMenu = () => {
   const { totalItems, setFilterView, grid_view, setGridView, setListView } =
     useMyProductContext();
+  const { filtered_items } = useMyFilterContext();
   // console.log("view", setListView);
   return (
     <div>
       <div className="sorting-list--grid">
-        <h3 className="">{totalItems}&nbsp;Vehicles</h3>
+        <h3 className="">
+          {filtered_items}
+          {" / "}
+          {totalItems}&nbsp;Vehicles
+        </h3>
         <button
           className={grid_view ? "view_toggle btn_icon_iv" : "btn_icon_iv"}
           onClick={setGridView}

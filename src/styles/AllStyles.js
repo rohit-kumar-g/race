@@ -807,7 +807,7 @@ export const ProductFilterStyled = styled.div`
 export const CardGridStyled = styled.div`
   & {
     width: 33%;
-    min-width: 30rem;
+    min-width: auto;
     display: inline-block;
   }
   .price_info {
@@ -890,9 +890,9 @@ export const CardGridStyled = styled.div`
     margin-top: 1rem;
     font-weight: bold;
   }
-  @media (max-width: ${({ theme }) => theme.media.tab}) {
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
     & {
-      min-width: auto;
+      min-width: 32rem;
     }
   }
 `;

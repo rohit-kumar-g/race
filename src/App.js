@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import Admin from "./pages/Admin";
 import SingleCar from "./pages/SingleCar";
 import Warranty from "./pages/Warranty";
+import { useMyProductContext } from "./myhelper_r/context/MyProductcontext";
 function App() {
   const themeday = {
     colors: {
@@ -44,11 +45,12 @@ function App() {
       tab: "998px",
     },
   };
+  const { filter_view} =useMyProductContext();
   return (
     <ThemeProvider theme={themeday}>
       <BrowserRouter>
         <GlobalStyle />
-        <div id="main">
+        <div id="main" className={filter_view ? "block_active_filter" : ""}>
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />

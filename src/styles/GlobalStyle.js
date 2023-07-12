@@ -18,6 +18,10 @@ html {
     display: flex;
     flex-direction: column;
 }
+.block_active_filter{
+    position: fixed;
+    z-index: 10;
+}
 body {
     background:${({ theme }) => theme.colors.bgbody}; 
 }

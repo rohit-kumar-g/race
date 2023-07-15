@@ -631,7 +631,7 @@ export const InventoryStyled = styled.div`
       min-height: 100vh;
       overflow: scroll;
       z-index: 9999;
-      background: snow;
+      background: #fff;
       .close_filter_view {
         display: block;
         margin: 4rem 3rem 0 0;
@@ -725,6 +725,10 @@ export const CardListStyled = styled.div`
   .con_2 {
     display: flex;
     flex-direction: row;
+  }
+  .con_3 {
+    width: 100%;
+    height: 100%;
   }
   .info_con {
     margin-top: auto;
@@ -954,6 +958,74 @@ export const OverflowCardStyled = styled.div`
     display: none;
   }
 `;
+export const ViewerVideoStyled = styled.div`
+  display: block;
+  .video-player {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    /* background-color: ${({ theme }) => theme.colors.bgformleft}; */
+  }
+  .video-element {
+    margin-inline: auto;
+    aspect-ratio: 16/9;
+    object-fit: contain;
+    min-width: 36rem;
+    max-height: 36rem;
+  }
+  .video-navigation {
+    opacity: 0.4;
+    position: absolute;
+    margin: 2rem;
+    font-size: 3rem;
+    border-radius: 50%;
+    padding: 1rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    display: inline;
+    z-index: 100;
+  }
+  .prev {
+    left: 0;
+  }
+  .next {
+    right: 0;
+  }
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    .video-navigation {
+      margin-inline: auto;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 50%;
+      padding: 0rem;
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+`;
+export const ViewerImageStyled = styled.div`
+  .bottom_btn {
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 900;
+    position: relative;
+    top: -4rem;
+    display: flex;
+    padding-inline: 4rem;
+    justify-content: space-between;
+  }
+  .image_gallary_container {
+    height: 41rem;
+    display: flex;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+`;
 export const SingleCarStyled = styled.div`
   & {
     background: ${({ theme }) => theme.colors.bgnav};
@@ -961,17 +1033,46 @@ export const SingleCarStyled = styled.div`
     width: 95%;
     margin: auto;
   }
-  .image_gallary {
-    height: 40%;
-    min-height: 30rem;
+  .fullscreen_viewer {
     overflow: scroll;
     display: flex;
-    flex-wrap: nowrap;
+    flex-direction: column;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    .image_gallary_container{
+      height: 100%;
+    }
   }
-  .corausel_images_sgp {
-    /* width: 45%; */
-    aspect-ratio: 4/3;
+  .chg_gall {
+    opacity: 0.4;
+    position: absolute;
+    top: 12rem;
+    z-index: 200;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 1rem;
+    font-size: 2rem;
+    justify-content: center;
+    padding: 0.5rem ;
+    margin-left: 2rem;
+    cursor: pointer;
+    color: ${({ theme }) => theme.colors.xtnav1};
+    border: 3px solid ${({ theme }) => theme.colors.bgbtn};
+    background: ${({ theme }) => theme.colors.bgnav};
+    &:hover,
+    &:active {
+      opacity: 0.8;
+      box-shadow: ${({ theme }) => theme.colors.boxoutshadow};
+      transform: scale(0.96);
+      background: ${({ theme }) => theme.colors.xtnav1};
+      color: ${({ theme }) => theme.colors.bgnav};
+    }
+    &:content{}
   }
+
   .con_1 {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -1002,10 +1103,10 @@ export const SingleCarStyled = styled.div`
     font-weight: 600;
   }
   .title_spec {
-    text-size-adjust: 1rem;
     font-size: 2.4rem;
     padding: 1rem 2rem;
     color: ${({ theme }) => theme.colors.bgbtn};
+   
   }
   .spec-item {
     font-size: 1.6rem;
@@ -1035,6 +1136,10 @@ export const SingleCarStyled = styled.div`
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     .con_1 {
       grid-template-columns: 100%;
+    }
+    .con_2 {
+      column-count: 2;
+      column-gap: 0rem;
     }
   }
 `;

@@ -27,10 +27,12 @@ const CarForm = () => {
     driveTrain: "",
     transmission: "",
     vin: "",
+    trim: "",
     engine: "",
     mileage: "",
     stock: "",
     t60: [],
+    videos: [],
     mainimages: [],
     images: [],
   });
@@ -182,10 +184,12 @@ const CarForm = () => {
         driveTrain: "",
         transmission: "",
         vin: "",
+        trim:"",
         engine: "",
         mileage: "",
         stock: "",
         t60: [],
+        videos: [],
         images: [],
         mainimages: [],
       });
@@ -260,6 +264,16 @@ const CarForm = () => {
           />
         </div>
         <div className="form-group">
+          <label htmlFor="fuelType">Fuel:</label>
+          <input
+            type="text"
+            id="fuelType"
+            name="fuelType"
+            value={carData.fuelType}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
           <label htmlFor="driveTrain">Drive Train:</label>
           <input
             type="text"
@@ -286,6 +300,16 @@ const CarForm = () => {
             id="vin"
             name="vin"
             value={carData.vin}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="trim">trim:</label>
+          <input
+            type="text"
+            id="trim"
+            name="trim"
+            value={carData.trim}
             onChange={handleChange}
           />
         </div>
@@ -472,6 +496,18 @@ const CarForm = () => {
           {isUploading && <progress value={imageUploadProgress} max="100" />}
         </div>
         <div className="form-group">
+          <label htmlFor="images"> Videos:</label>
+          <input
+            type="file"
+            id="videos"
+            name="videos"
+            multiple
+            disabled={isUploading}
+            // required
+          />
+          {isUploading && <progress value={imageUploadProgress} max="100" />}
+        </div>
+        {/* <div className="form-group">
           <label htmlFor="images"> 360 Images:</label>
           <input
             type="file"
@@ -482,7 +518,7 @@ const CarForm = () => {
             // required
           />
           {isUploading && <progress value={imageUploadProgress} max="100" />}
-        </div>
+        </div> */}
         <div className="form-group">
           <label htmlFor="images"> other Images:</label>
           <input

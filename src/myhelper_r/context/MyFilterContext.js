@@ -20,13 +20,13 @@ const reducer = (state, action) => {
     case "SET_IS_OPEN":
       return { ...state, isOpen: action.payload };
     case "SET_FILTERED_ITEMS":
-      console.log("SET_FILTERED_ITEMS", action.payload);
+      // console.log("SET_FILTERED_ITEMS", action.payload);
       return { ...state, filtered_items: action.payload };
     case "SET_CURRENT_PAGE":
-      console.log("tpCURR", action.payload);
+      // console.log("tpCURR", action.payload);
       return { ...state, currentPage: action.payload };
     case "SET_TOTAL_PAGES":
-      console.log("tpAGE", action.payload);
+      // console.log("tpAGE", action.payload);
       return { ...state, totalPages: action.payload };
     case "SET_DOCUMENTS":
       return { ...state, documents: action.payload };
@@ -71,21 +71,21 @@ export const MyFilterProvider = ({ children }) => {
       // Get the documents for the current page
       const start = (currentPage - 1) * pageSize;
       const end = start + pageSize;
-    let filteredCars = [...cars]; // Make a copy of the original cars array
+      let filteredCars = [...cars]; // Make a copy of the original cars array
 
-    for (const field in selectedOptions) {
-      const options = selectedOptions[field];
+      for (const field in selectedOptions) {
+        const options = selectedOptions[field];
 
-      if (options && options.length !== 0) {
-        filteredCars = filteredCars.filter((car) =>
-          options.includes(car[field])
-        );
+        if (options && options.length !== 0) {
+          filteredCars = filteredCars.filter((car) =>
+            options.includes(car[field])
+          );
+        }
       }
-    } 
-    console.log(filteredCars,"no");
-    dispatch({ type: "SET_FILTERED_ITEMS", payload: filteredCars.length });
+      // console.log(filteredCars,"no");
+      dispatch({ type: "SET_FILTERED_ITEMS", payload: filteredCars.length });
       const docs = filteredCars.slice(start, end);
-      
+
       dispatch({ type: "SET_TOTAL_PAGES", payload: totalPageCount });
       dispatch({ type: "SET_DOCUMENTS", payload: docs });
     };
@@ -101,7 +101,7 @@ export const MyFilterProvider = ({ children }) => {
   const goToNextPage = () => {
     const nextPage = Math.min(currentPage + 1, totalPages);
     dispatch({ type: "SET_CURRENT_PAGE", payload: nextPage });
-    console.log("tpQ", currentPage);
+    // console.log("tpQ", currentPage);
   };
   const handleToggle = (fieldName) => {
     dispatch({
@@ -143,7 +143,7 @@ export const MyFilterProvider = ({ children }) => {
       if (compareCount < 3) {
         updatedOptions[car.id] = car;
       } else {
-        console.log("You have already selected 3 cars.");
+        // console.log("You have already selected 3 cars.");
       }
     }
     dispatch({ type: "SET_SELECTED_COMPARE", payload: updatedOptions });

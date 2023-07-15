@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { addCarData, firestorage } from "../myhelper_r/MyFirebaseConfig";
+import UpdateForm from "./Updates";
 const CarForm = () => {
   let timeer = new Date().getTime();
   const [carData, setCarData] = useState({
@@ -83,7 +84,7 @@ const CarForm = () => {
               // console.log("Uploaded", file.name, i);
             },
             (error) => {
-              console.error("Error uploading image:", error);
+              // console.error("Error uploading image:", error);
               reject(error);
             }
           );
@@ -91,7 +92,7 @@ const CarForm = () => {
           const downloadURL = await uploadTask.snapshot.ref.getDownloadURL();
           uploadedImages.push(downloadURL);
         } catch (error) {
-          console.error("Error uploading image:", error);
+          // console.error("Error uploading image:", error);
           reject(error);
         }
       }
@@ -119,7 +120,7 @@ const CarForm = () => {
               // console.log("Uploaded", file.name, i);
             },
             (error) => {
-              console.error("Error uploading image:", error);
+              // console.error("Error uploading image:", error);
               reject(error);
             }
           );
@@ -127,7 +128,7 @@ const CarForm = () => {
           const downloadURL = await uploadTask.snapshot.ref.getDownloadURL();
           uploadedImages.push(downloadURL);
         } catch (error) {
-          console.error("Error uploading image:", error);
+          // console.error("Error uploading image:", error);
           reject(error);
         }
       }
@@ -145,16 +146,16 @@ const CarForm = () => {
         e.target.mainimages.files,
         "mainn"
       );
-      const uploadedt60 = await handlemainImageUpload(
-        e.target.t60.files,
-        "t60"
+      const uploadedvideos = await handlemainImageUpload(
+        e.target.videos.files,
+        "videos"
       );
       setIsUploading(false);
       const carDataWithImages = {
         ...carData,
         images: uploadedImages,
         mainimages: uploadedmainImages,
-        t60: uploadedt60,
+        videos: uploadedvideos,
         timestamp: timeer,
       };
       addCarData(carDataWithImages);
@@ -184,7 +185,7 @@ const CarForm = () => {
         driveTrain: "",
         transmission: "",
         vin: "",
-        trim:"",
+        trim: "",
         engine: "",
         mileage: "",
         stock: "",
@@ -195,12 +196,22 @@ const CarForm = () => {
       });
       formRef.current.reset();
     } catch (error) {
-      console.error("Error saving car data:", error);
+      // console.error("Error saving car data:", error);
     }
     setIsSubmitting(false);
   };
+  const [isExpanded, setIsExpanded] = useState(false);
+  const handleToggle = () => {
+    setIsExpanded(!isExpanded);
+  };
   return (
     <div className="car-form-container">
+      <div>
+        <button onClick={handleToggle}>
+          {isExpanded ? "Collapse" : "Expand"}
+        </button>
+        {isExpanded && <UpdateForm />}
+      </div>
       <h2>Car Form</h2>
       <form ref={formRef} className="car-form" onSubmit={handleSubmit}>
         {/* <div className="form-group">

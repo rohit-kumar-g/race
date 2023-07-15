@@ -72,7 +72,6 @@ textarea {
 ;
 border: ${({ theme }) => theme.colors.bdrbtn1}
 ;
-text-transform: uppercase;
 box-shadow: ${({ theme }) => theme.colors.shdbtnxt}
 ;
 }

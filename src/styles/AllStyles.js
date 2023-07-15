@@ -155,8 +155,10 @@ export const NavXtStyled = styled.nav`
     }
     #menu-outline {
       position: absolute;
+      z-index: 200;
+      top:0;
       left: 1.5rem;
-      margin-right: 3rem;
+      padding: 4rem 5rem 2rem 1rem;
     }
   }
 `;

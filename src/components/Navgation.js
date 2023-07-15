@@ -94,11 +94,12 @@ const NavListXt = () => {
         </ul>
         {/* two button for open and close of menu */}
         <div className="mobile-navbar-btn">
-          <CgMenu
+          <div
             id="menu-outline"
             className="mobile-nav-icon"
-            onClick={() => setMenuIcon(true)}
-          />
+            onClick={() => setMenuIcon(true)}> 
+            <CgMenu
+          /></div>
           <CgClose
             name="close-outline"
             className="mobile-nav-icon close-outline"

@@ -1,3 +1,4 @@
+import React from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./styles/GlobalStyle";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -9,10 +10,10 @@ import LoanCalc from "./pages/LoanCalc";
 import Inventory from "./pages/Inventory";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Admin from "./pages/Admin";
 import SingleCar from "./pages/SingleCar";
 import Warranty from "./pages/Warranty";
 import { useMyProductContext } from "./myhelper_r/context/MyProductcontext";
+const Admin =React.lazy(() => import ("./pages/Admin"));
 function App() {
   const themeday = {
     colors: {

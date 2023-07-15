@@ -28,7 +28,12 @@ const VideoPlayer = ({ car }) => {
         <button className="video-navigation prev" onClick={handlePrevious}>
           <IoChevronBackOutline />
         </button>
-        <video className="video-element" src={videos[currentVideo]} controls>
+        <video
+          className="video-element"
+          src={videos[currentVideo]}
+          controls
+          poster={car.mainimages}
+        >
           Your browser does not support the video tag.
         </video>
         <button className="video-navigation next" onClick={handleNext}>

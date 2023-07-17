@@ -2,8 +2,8 @@ import { AdminPage } from '../styles/AllStyles';
 
 import React, { useState, useEffect, Suspense } from "react";
 
-const CarForm = React.lazy(() => import("../components/UploadFirestore"));
-const LoginForm = React.lazy(() => import("../components/LoginForm"));
+const CarForm = React.lazy(() => import("../components/AdmUploadFirestore"));
+const LoginForm = React.lazy(() => import("../components/AdmLogin"));
 
 const Admin = () => {
   const [authState, setAuthState] = useState(false);

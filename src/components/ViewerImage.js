@@ -38,10 +38,20 @@ const ViewerImage = ({ car }) => {
     setIsFullScreen(!!fullscreenElement);
   };
   useEffect(() => {
-    document.addEventListener("fullscreenchange", handleFullScreenChange);
-    document.addEventListener("mozfullscreenchange", handleFullScreenChange);
-    document.addEventListener("webkitfullscreenchange", handleFullScreenChange);
-    document.addEventListener("msfullscreenchange", handleFullScreenChange);
+    document.addEventListener("fullscreenchange", handleFullScreenChange, {
+      passive: true,
+    });
+    document.addEventListener("mozfullscreenchange", handleFullScreenChange, {
+      passive: true,
+    });
+    document.addEventListener(
+      "webkitfullscreenchange",
+      handleFullScreenChange,
+      { passive: true }
+    );
+    document.addEventListener("msfullscreenchange", handleFullScreenChange, {
+      passive: true,
+    });
     return () => {
       document.removeEventListener("fullscreenchange", handleFullScreenChange);
       document.removeEventListener(
@@ -56,6 +66,27 @@ const ViewerImage = ({ car }) => {
         "msfullscreenchange",
         handleFullScreenChange
       );
+    };
+  }, []);
+  useEffect(() => {
+    const imageGalleryContainer = document.querySelector(
+      ".image_gallary_container"
+    );
+    const touchMoveHandler = (e) => {
+      e.stopPropagation();
+    };
+    if (imageGalleryContainer) {
+      imageGalleryContainer.addEventListener("touchmove", touchMoveHandler, {
+        passive: false,
+      });
+    }
+    return () => {
+      if (imageGalleryContainer) {
+        imageGalleryContainer.removeEventListener(
+          "touchmove",
+          touchMoveHandler
+        );
+      }
     };
   }, []);
   return (

@@ -156,7 +156,7 @@ export const NavXtStyled = styled.nav`
     #menu-outline {
       position: absolute;
       z-index: 200;
-      top:0;
+      top: 0;
       left: 1.5rem;
       padding: 4rem 5rem 2rem 1rem;
     }
@@ -959,6 +959,23 @@ export const OverflowCardStyled = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+  .skeleton-container {
+    flex-direction: column;
+    margin: 2rem !important;
+    max-width: 32rem;
+    max-height: 30rem;
+  }
+  .firstt {
+    margin-bottom: 1rem !important;
+    width: 95% !important;
+    height: 2.3rem;
+  }
+  .skeleton-image {
+    width: 24rem !important;
+    height: 26rem !important;
+    margin: 0 !important;
+    
+  }
 `;
 export const ViewerVideoStyled = styled.div`
   display: block;
@@ -1044,7 +1061,7 @@ export const SingleCarStyled = styled.div`
     &::-webkit-scrollbar {
       display: none;
     }
-    .image_gallary_container{
+    .image_gallary_container {
       height: 100%;
     }
   }
@@ -1058,7 +1075,7 @@ export const SingleCarStyled = styled.div`
     border-radius: 1rem;
     font-size: 2rem;
     justify-content: center;
-    padding: 0.5rem ;
+    padding: 0.5rem;
     margin-left: 2rem;
     cursor: pointer;
     color: ${({ theme }) => theme.colors.xtnav1};
@@ -1072,9 +1089,9 @@ export const SingleCarStyled = styled.div`
       background: ${({ theme }) => theme.colors.xtnav1};
       color: ${({ theme }) => theme.colors.bgnav};
     }
-    &:content{}
+    &:content {
+    }
   }
-
   .con_1 {
     display: grid;
     grid-template-columns: 50% 50%;
@@ -1108,7 +1125,6 @@ export const SingleCarStyled = styled.div`
     font-size: 2.4rem;
     padding: 1rem 2rem;
     color: ${({ theme }) => theme.colors.bgbtn};
-   
   }
   .spec-item {
     font-size: 1.6rem;
@@ -1193,5 +1209,119 @@ export const MultiSelectDropdownStyled = styled.div`
     color: ${({ theme }) => theme.colors.bgnav};
     font-size: 1.2rem;
     /* border: 3px solid ${({ theme }) => theme.colors.bgnav}; */
+  }
+`;
+export const SkeletonLoadingStyled = styled.div`
+  .skeleton-container {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+  }
+  .skeleton-image {
+    width: 40rem;
+    height: 16rem;
+    background-color: #f6f7f8;
+    /* border-radius: 50%; */
+    margin: 2rem;
+    animation: skeleton-pulse 1s infinite ease-in-out;
+  }
+  .skeleton-lines {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    /* align-items: flex-start; */
+    width: 100%;
+  }
+  .skeleton-line {
+    width: 80%;
+    height: 16px;
+    background-color: #f6f7f8;
+    margin-bottom: 8px;
+    animation: skeleton-pulse 1s infinite ease-in-out;
+  }
+  .firstt {
+    margin-bottom: 6rem;
+    width: 100%;
+    height: 2.3rem;
+  }
+  /* Animation */
+  @keyframes skeleton-pulse {
+    0% {
+      background-color: #f6f7f8;
+    }
+    50% {
+      background-color: #eaebed;
+    }
+    100% {
+      background-color: #f6f7f8;
+    }
+  }
+`;
+export const SkeletonLoadPgStyled = styled.div`
+  .skeleton-container {
+    background: #fff;
+    position: relative;
+    width: 100%;
+    margin: auto;
+    padding: 2rem;
+    min-height: 100vh;
+    max-width: 120rem;
+    
+  }
+  
+  .skeleton-image {
+    width: 90%;
+    max-height: 30rem;
+    margin:  auto;
+    aspect-ratio: 4/3;
+    background-color: #f6f7f8;
+    margin-bottom: 16px;
+    animation: skeleton-pulse 1s infinite ease-in-out;
+  }
+
+  .skeleton-article {
+    margin: 1rem 5rem;
+    width: 85%;
+    height: 12px;
+    background-color: #f6f7f8;
+    animation: skeleton-pulse 1s infinite ease-in-out;
+  }
+  .article_cont {
+    column-count: 2;
+    column-gap: 4rem;
+  }
+  .skeleton-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px dashed #007bff;
+    border-width: 2px 0;
+    animation: skeleton-rotate 2s infinite linear;
+  }
+
+  /* Animation */
+  @keyframes skeleton-pulse {
+    0% {
+      background-color: #f6f7f8;
+    }
+    50% {
+      background-color: #eaebed;
+    }
+    100% {
+      background-color: #f6f7f8;
+    }
+  }
+
+  @keyframes skeleton-rotate {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
   }
 `;

@@ -2,18 +2,31 @@ import React from "react";
 import { OverflowCardStyled } from "../styles/AllStyles";
 import CardGrid from "./CardGrid";
 import { styled } from "styled-components";
+import SkeletonLoading from "./LoadingCard";
 const ViewSlideGrid = ({ cars }) => {
   return (
     <>
       <Wrapper>Latest Cars</Wrapper>
       <OverflowCardStyled>
-        {cars?.slice(0, 5).map((car, index) => (
-          <CardGrid car={car} key={index} />
-        ))}
+        {cars.length < 1 ? (
+          <>
+            <SkeletonLoading />
+            <SkeletonLoading />
+            <SkeletonLoading />
+            <SkeletonLoading />
+            <SkeletonLoading />
+            <SkeletonLoading />
+          </>
+        ) : (
+          cars
+            .slice(0, 5)
+            .map((car, index) => <CardGrid car={car} key={index} />)
+        )}
       </OverflowCardStyled>
     </>
   );
 };
+
 const Wrapper = styled.div`
   position: relative;
   /* bottom: -2rem; */

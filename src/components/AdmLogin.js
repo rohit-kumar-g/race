@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { firestore } from "../myhelper_r/MyFirebaseConfig";
+import { fireauth } from "../myhelper_r/MyFirebaseConfig";
 
-function UpdateForm() {
+function LoginForm({state}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -17,18 +17,12 @@ function UpdateForm() {
     e.preventDefault();
 
     try {
-      const docRef = firestore.collection("carinfo").doc("metainfo");
-
-      // Update the document fields
-      await docRef.update({
-        email,
-        password,
-      });
-
-      alert("Update successful!");
+      await fireauth.signInWithEmailAndPassword(email, password);
+      state(true);
+      alert("Authentication successful!");
     } catch (error) {
-      console.error("Error updating car info:", error);
-      alert("Update failed. Please try again.");
+      console.error("Error logging in:", error);
+      alert("Authentication failed. Please try again.");
     }
   };
 
@@ -46,9 +40,9 @@ function UpdateForm() {
           onChange={handlePasswordChange}
         />
       </div>
-      <button type="submit">Update</button>
+      <button type="submit">Login</button>
     </form>
   );
 }
 
-export default UpdateForm;
+export default LoginForm;

@@ -9,7 +9,7 @@ const initialState = {
   isOpen: {},
   currentPage: 1,
   totalPages: 0,
-  documents: [],
+  docPerPg: [],
 };
 const reducer = (state, action) => {
   switch (action.type) {
@@ -28,8 +28,8 @@ const reducer = (state, action) => {
     case "SET_TOTAL_PAGES":
       // console.log("tpAGE", action.payload);
       return { ...state, totalPages: action.payload };
-    case "SET_DOCUMENTS":
-      return { ...state, documents: action.payload };
+    case "SET_docPerPg":
+      return { ...state, docPerPg: action.payload };
     default:
       return state;
   }
@@ -43,7 +43,7 @@ export const MyFilterProvider = ({ children }) => {
     isOpen,
     currentPage,
     totalPages,
-    documents,
+    docPerPg,
   } = state;
   const pageSize = 12;
   const { cars } = useMyProductContext();
@@ -53,12 +53,12 @@ export const MyFilterProvider = ({ children }) => {
   //   const unsubscribe = ((snapshot) => {
   //     const totalItems = snapshot.size;
   //     const totalPageCount = Math.ceil(totalItems / pageSize);
-  //     // Get the documents for the current page
+  //     // Get the docPerPg for the current page
   //     const start = (currentPage - 1) * pageSize;
   //     const end = start + pageSize;
   //     const docs = snapshot.docs.slice(start, end).map((doc) => doc.data());
   //     dispatch({ type: "SET_TOTAL_PAGES", payload: totalPageCount });
-  //     dispatch({ type: "SET_DOCUMENTS", payload: docs });
+  //     dispatch({ type: "SET_docPerPg", payload: docs });
   //   });
   //   return () => {
   //     unsubscribe();
@@ -68,14 +68,12 @@ export const MyFilterProvider = ({ children }) => {
     const Paginate = () => {
       const totalItems = cars.length;
       const totalPageCount = Math.ceil(totalItems / pageSize);
-      // Get the documents for the current page
+      // Get the docPerPg for the current page
       const start = (currentPage - 1) * pageSize;
       const end = start + pageSize;
       let filteredCars = [...cars]; // Make a copy of the original cars array
-
       for (const field in selectedOptions) {
         const options = selectedOptions[field];
-
         if (options && options.length !== 0) {
           filteredCars = filteredCars.filter((car) =>
             options.includes(car[field])
@@ -85,9 +83,8 @@ export const MyFilterProvider = ({ children }) => {
       // console.log(filteredCars,"no");
       dispatch({ type: "SET_FILTERED_ITEMS", payload: filteredCars.length });
       const docs = filteredCars.slice(start, end);
-
       dispatch({ type: "SET_TOTAL_PAGES", payload: totalPageCount });
-      dispatch({ type: "SET_DOCUMENTS", payload: docs });
+      dispatch({ type: "SET_docPerPg", payload: docs });
     };
     Paginate();
   }, [cars, currentPage, selectedOptions]);
@@ -135,18 +132,18 @@ export const MyFilterProvider = ({ children }) => {
     dispatch({ type: "SET_SELECTED_OPTIONS", payload: updatedOptions });
   };
   const handleCompareClick = (car) => {
-    const updatedOptions = { ...selectedCompare };
-    if (updatedOptions[car.id]) {
-      delete updatedOptions[car.id];
+    const compareList = { ...selectedCompare };
+    if (compareList[car.id]) {
+      delete compareList[car.id];
     } else {
-      const compareCount = Object.keys(updatedOptions).length;
+      const compareCount = Object.keys(compareList).length;
       if (compareCount < 3) {
-        updatedOptions[car.id] = car;
+        compareList[car.id] = car;
       } else {
         // console.log("You have already selected 3 cars.");
       }
     }
-    dispatch({ type: "SET_SELECTED_COMPARE", payload: updatedOptions });
+    dispatch({ type: "SET_SELECTED_COMPARE", payload: compareList });
   };
   const contextValue = {
     selectedOptions,
@@ -155,7 +152,7 @@ export const MyFilterProvider = ({ children }) => {
     isOpen,
     currentPage,
     totalPages,
-    documents,
+    docPerPg,
     goToPage,
     goToPreviousPage,
     goToNextPage,

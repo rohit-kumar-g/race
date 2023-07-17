@@ -7,6 +7,7 @@ import GridViewCar from "../components/ViewGrid";
 import { useMyProductContext } from "../myhelper_r/context/MyProductcontext";
 import ViewInvMenu from "../components/ViewInvMenu";
 import { useMyFilterContext } from "../myhelper_r/context/MyFilterContext";
+import SkeletonLoading from "../components/LoadingCard";
 const CarList = () => {
   const {
     isLoading,
@@ -22,7 +23,7 @@ const CarList = () => {
   const {
     currentPage,
     totalPages,
-    documents,
+    docPerPg,
     goToPage,
     goToPreviousPage,
     goToNextPage,
@@ -43,12 +44,23 @@ const CarList = () => {
         </div>
         <div className="inv_Menu_List_OR_Grid">
           <ViewInvMenu />
-          <div className={isLoading || isError ? "loading_bg" : ""}></div>
+          {/* <div className={isLoading || isError ? "loading_bg" : ""}></div> */}
+          {(isLoading || isError) && (
+            <div className="loading_bg">
+              <SkeletonLoading />
+              <SkeletonLoading />
+              <SkeletonLoading />
+              <SkeletonLoading />
+              <SkeletonLoading />
+              <SkeletonLoading />
+              <SkeletonLoading />
+            </div>
+          )}
           <div className="toggle_option">
             {grid_view ? (
-              <GridViewCar cars={documents} />
+              <GridViewCar cars={docPerPg} />
             ) : (
-              <ListViewCar cars={documents} />
+              <ListViewCar cars={docPerPg} />
             )}
           </div>
         </div>

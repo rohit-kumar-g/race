@@ -1,6 +1,7 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/storage";
+import "firebase/compat/auth";
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -12,6 +13,9 @@ const firebaseConfig = {
 export const firebaser = firebase.initializeApp(firebaseConfig);
 export const firestore = firebase.firestore();
 export const firestorage = firebase.storage();
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+export const fireauth = firebase.auth();
+
 // Function to store data in Firestore
 export const addCarData = async (carData) => {
   try {
@@ -39,38 +43,38 @@ export const getCarData = async () => {
     return error;
   }
 };
-export const get5CarData = async () => {
-  try {
-    const carsCollection = firestore.collection("cars");
-    const snapshot = await carsCollection
-      .orderBy("timestamp", "desc")
-      .limit(5)
-      .get();
-    const carData = snapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-    // console.log(carData, "jlkjl");
-    return carData;
-  } catch (error) {
-    // console.error("Error fetching car data:", error);
-    return [];
-  }
-};
-export const getCarDataindv = async (carId) => {
-  try {
-    const carRef = firestore.collection("cars").doc(carId);
-    const carSnapshot = await carRef.get();
-    if (carSnapshot.exists) {
-      return carSnapshot.data();
-    } else {
-      throw new Error("Car not found");
-    }
-  } catch (error) {
-    // console.error("Error getting car data:", error);
-    throw error;
-  }
-};
+// export const get5CarData = async () => {
+//   try {
+//     const carsCollection = firestore.collection("cars");
+//     const snapshot = await carsCollection
+//       .orderBy("timestamp", "desc")
+//       .limit(5)
+//       .get();
+//     const carData = snapshot.docs.map((doc) => ({
+//       id: doc.id,
+//       ...doc.data(),
+//     }));
+//     // console.log(carData, "jlkjl");
+//     return carData;
+//   } catch (error) {
+//     // console.error("Error fetching car data:", error);
+//     return [];
+//   }
+// };
+// export const getCarDataindv = async (carId) => {
+//   try {
+//     const carRef = firestore.collection("cars").doc(carId);
+//     const carSnapshot = await carRef.get();
+//     if (carSnapshot.exists) {
+//       return carSnapshot.data();
+//     } else {
+//       throw new Error("Car not found");
+//     }
+//   } catch (error) {
+//     // console.error("Error getting car data:", error);
+//     throw error;
+//   }
+// };
 export const UnqVals4K = (jsonData, key) => {
   const uniqueValues = new Set();
   // Extract unique values

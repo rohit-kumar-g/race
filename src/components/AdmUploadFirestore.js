@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { addCarData, firestorage } from "../myhelper_r/MyFirebaseConfig";
-const UpdateForm =React.lazy(() => import("./Updates"));
+const UpdateForm =React.lazy(() => import("./AdmUpdPass"));
 const CarForm = () => {
   let timeer = new Date().getTime();
   const [carData, setCarData] = useState({

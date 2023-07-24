@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ViewerImageStyled } from "../styles/AllStyles";
 import { BsArrowsFullscreen, BsFullscreenExit } from "react-icons/bs";
+
 const ViewerImage = ({ car }) => {
   const fullscreenRef = useRef(null);
   const [isFullScreen, setIsFullScreen] = useState(false);
+
   const goFullScreen = () => {
     const elem = fullscreenRef.current;
     if (elem.requestFullscreen) {
@@ -17,6 +19,7 @@ const ViewerImage = ({ car }) => {
     }
     setIsFullScreen(true);
   };
+
   const exitFullScreen = () => {
     if (document.exitFullscreen) {
       document.exitFullscreen();
@@ -27,8 +30,9 @@ const ViewerImage = ({ car }) => {
     } else if (document.msExitFullscreen) {
       document.msExitFullscreen();
     }
-    // setIsFullScreen(false);
+    setIsFullScreen(false);
   };
+
   const handleFullScreenChange = () => {
     const fullscreenElement =
       document.fullscreenElement ||
@@ -37,6 +41,7 @@ const ViewerImage = ({ car }) => {
       document.msFullscreenElement;
     setIsFullScreen(!!fullscreenElement);
   };
+
   useEffect(() => {
     document.addEventListener("fullscreenchange", handleFullScreenChange, {
       passive: true,
@@ -52,6 +57,7 @@ const ViewerImage = ({ car }) => {
     document.addEventListener("msfullscreenchange", handleFullScreenChange, {
       passive: true,
     });
+
     return () => {
       document.removeEventListener("fullscreenchange", handleFullScreenChange);
       document.removeEventListener(
@@ -68,32 +74,12 @@ const ViewerImage = ({ car }) => {
       );
     };
   }, []);
-  useEffect(() => {
-    const imageGalleryContainer = document.querySelector(
-      ".image_gallary_container"
-    );
-    const touchMoveHandler = (e) => {
-      e.stopPropagation();
-    };
-    if (imageGalleryContainer) {
-      imageGalleryContainer.addEventListener("touchmove", touchMoveHandler, {
-        passive: false,
-      });
-    }
-    return () => {
-      if (imageGalleryContainer) {
-        imageGalleryContainer.removeEventListener(
-          "touchmove",
-          touchMoveHandler
-        );
-      }
-    };
-  }, []);
+
   return (
     <ViewerImageStyled>
       <div
         ref={fullscreenRef}
-        className={isFullScreen ? "fullscreen_viewer" : ""}
+        className={`viewer-image ${isFullScreen ? "fullscreen_viewer" : ""}`}
       >
         <div className="image_gallary_container">
           {car.images &&
@@ -118,4 +104,5 @@ const ViewerImage = ({ car }) => {
     </ViewerImageStyled>
   );
 };
+
 export default ViewerImage;

@@ -1044,6 +1044,15 @@ export const ViewerImageStyled = styled.div`
       display: none;
     }
   }
+  .viewer-image.fullscreen_viewer .image_gallary_container {
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .viewer-image.fullscreen_viewer .image_gallary_container::-webkit-scrollbar {
+    display: none;
+  }
 `;
 export const SingleCarStyled = styled.div`
   & {
@@ -1069,7 +1078,7 @@ export const SingleCarStyled = styled.div`
     opacity: 0.4;
     position: absolute;
     top: 12rem;
-    z-index: 200;
+    z-index: 100;
     display: inline-flex;
     align-items: center;
     border-radius: 1rem;

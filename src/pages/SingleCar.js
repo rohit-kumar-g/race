@@ -16,12 +16,12 @@ const SingleCar = () => {
 
       if (foundCar) {
         setCar(foundCar);
-        console.log("car", foundCar);
+       // console.log("car", foundCar);
       } else {
-        console.log("Car object not found in cars");
+       // console.log("Car object not found in cars");
       }
     } else {
-      console.log("Empty or undefined cars array");
+     // console.log("Empty or undefined cars array");
     }
 
     setLoading(false);

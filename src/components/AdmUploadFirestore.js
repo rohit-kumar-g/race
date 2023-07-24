@@ -265,7 +265,7 @@ const CarForm = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="fuelEconomy">Fuel:</label>
+          <label htmlFor="fuelEconomy">Fuel Economy:</label>
           <input
             type="text"
             id="fuelEconomy"
@@ -275,7 +275,7 @@ const CarForm = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="fuelType">Fuel:</label>
+          <label htmlFor="fuelType">Fuel Type:</label>
           <input
             type="text"
             id="fuelType"

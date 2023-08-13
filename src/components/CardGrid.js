@@ -7,7 +7,7 @@ function CardGrid({ car, index }) {
     <CardGridStyled>
       <div className="con_1" key={index}>
         <div className="img_con">
-          <img className="centered-image" src={car.mainimages} alt="" />
+          <img className="centered-image" src={car.frontimages} alt="" />
         </div>
         <div className="data_cont">
           <div>

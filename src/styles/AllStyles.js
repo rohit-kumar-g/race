@@ -491,54 +491,6 @@ export const EmiCalculatorStyled = styled.div`
     width: 32rem;
   }
 `;
-export const AdminPage = styled.div`
-  .car-form-container {
-    max-width: 400px;
-    margin: 10rem auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  .car-form-container h2 {
-    margin-bottom: 20px;
-  }
-  .car-form {
-    display: flex;
-    flex-direction: column;
-  }
-  .form-group {
-    margin-bottom: 10px;
-    display: grid;
-  }
-  label {
-    font-weight: bold;
-    padding: 1rem;
-  }
-  input[type="text"],
-  input[type="file"] {
-    padding: 5px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  button[type="submit"] {
-    padding: 10px 20px;
-    margin-top: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  button[type="submit"]:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  progress {
-    display: block;
-    width: 100%;
-    margin-top: 5px;
-  }
-`;
 export const InventoryStyled = styled.div`
   max-width: 128rem;
   width: 98%;
@@ -974,7 +926,6 @@ export const OverflowCardStyled = styled.div`
     width: 24rem !important;
     height: 26rem !important;
     margin: 0 !important;
-    
   }
 `;
 export const ViewerVideoStyled = styled.div`
@@ -1049,7 +1000,6 @@ export const ViewerImageStyled = styled.div`
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-
   .viewer-image.fullscreen_viewer .image_gallary_container::-webkit-scrollbar {
     display: none;
   }
@@ -1275,19 +1225,16 @@ export const SkeletonLoadPgStyled = styled.div`
     padding: 2rem;
     min-height: 100vh;
     max-width: 120rem;
-    
   }
-  
   .skeleton-image {
     width: 90%;
     max-height: 30rem;
-    margin:  auto;
+    margin: auto;
     aspect-ratio: 4/3;
     background-color: #f6f7f8;
     margin-bottom: 16px;
     animation: skeleton-pulse 1s infinite ease-in-out;
   }
-
   .skeleton-article {
     margin: 1rem 5rem;
     width: 85%;
@@ -1311,7 +1258,6 @@ export const SkeletonLoadPgStyled = styled.div`
     border-width: 2px 0;
     animation: skeleton-rotate 2s infinite linear;
   }
-
   /* Animation */
   @keyframes skeleton-pulse {
     0% {
@@ -1324,7 +1270,6 @@ export const SkeletonLoadPgStyled = styled.div`
       background-color: #f6f7f8;
     }
   }
-
   @keyframes skeleton-rotate {
     0% {
       transform: translate(-50%, -50%) rotate(0deg);
@@ -1332,5 +1277,193 @@ export const SkeletonLoadPgStyled = styled.div`
     100% {
       transform: translate(-50%, -50%) rotate(360deg);
     }
+  }
+`;
+export const CarFormStyled = styled.div`
+  .car-form-container {
+    max-width: 600px;
+    // margin-inline: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .car-form-container h2 {
+    margin-bottom: 20px;
+  }
+  .car-form {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-group {
+    margin-bottom: 10px;
+    display: grid;
+  }
+  label {
+    font-weight: bold;
+    padding: 1rem;
+  }
+  input[type="text"],
+  input[type="file"] {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  button[type="submit"] {
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  progress {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+  }
+`;
+// Styled Sidebar container
+export const Sidebar = styled.div`
+  // min-height: 80vh;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  margin-right: 4rem;
+`;
+// Styled SidebarTab
+export const SidebarTab = styled.div`
+  padding: 10px;
+  margin: 5px 0;
+  cursor: pointer;
+  background-color: ${(props) => (props.active ? "#555" : "transparent")};
+  border-radius: 5px;
+`;
+// Styled AdminPage
+export const AdminPage = styled.div`
+  display: grid;
+  grid-template-columns: 0.3fr 0.7fr;
+  padding: 20px;
+  .App {
+    text-align: center;
+    padding: 20px;
+  }
+  button {
+    color: #4d5156;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    font-weight: 400;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 2rem;
+  }
+  .image-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    .cross-button {
+      background-color: #007bff;
+      color: white;
+      display: inline;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      padding: 0.6rem;
+      position: relative;
+      left: 2rem;
+      bottom: 9rem;
+    }
+  }
+  .thumbnail {
+    width: 150px;
+    height: 100px;
+    border: 1px solid #ccc;
+    margin: 5px;
+  }
+  .update-form {
+    margin-inline: auto;
+    background-color: white;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  .update-form h2 {
+    margin-bottom: 20px;
+  }
+  .update-form label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  .update-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+  }
+  .update-form button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  .update-form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  .close-button {
+    background-color: #ccc;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    overflow: hidden; /* Prevent scrolling in overlay */
+  }
+  .overlay-content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-height: 90%;
+    width: 80%;
+    overflow-y: auto;
+  }
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
   }
 `;

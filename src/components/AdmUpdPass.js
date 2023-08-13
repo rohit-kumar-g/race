@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import { fireauth } from "../myhelper_r/MyFirebaseConfig";
-
-function UpdateForm() {
+function AdmUpdPass() {
   const [email, setEmail] = useState("");
-
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
-
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
     try {
       await fireauth.sendPasswordResetEmail(email);
       alert("Password reset email sent successfully!");
@@ -19,7 +15,6 @@ function UpdateForm() {
       alert("Failed to send password reset email. Please try again.");
     }
   };
-
   return (
     <form onSubmit={handleFormSubmit}>
       <div>
@@ -30,5 +25,4 @@ function UpdateForm() {
     </form>
   );
 }
-
-export default UpdateForm;
+export default AdmUpdPass;

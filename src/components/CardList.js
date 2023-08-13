@@ -3,14 +3,15 @@ import { CardListStyled } from "../styles/AllStyles";
 import { NavLink } from "react-router-dom";
 import { useMyFilterContext } from "../myhelper_r/context/MyFilterContext";
 const CardList = ({ car, index }) => {
-  const { handleCompareClick, errorMessage ,setErrorMessage} = useMyFilterContext();
+  const { handleCompareClick, errorMessage, setErrorMessage } =
+    useMyFilterContext();
   return (
     <CardListStyled>
       <div className="con_1" key={index}>
         <div className="con_2">
           <div className="img_con">
             <NavLink to={`/car/${car.id}`}>
-              <img className="centered-image" src={car.mainimages} alt="" />
+              <img className="centered-image" src={car.frontimages} alt="" />
             </NavLink>
           </div>
           <div className="con_3">

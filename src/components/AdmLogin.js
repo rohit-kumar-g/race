@@ -1,21 +1,16 @@
 import React, { useState } from "react";
 import { fireauth } from "../myhelper_r/MyFirebaseConfig";
-
-function LoginForm({state}) {
+function AdmFormLogin({ state }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
-
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
     try {
       await fireauth.signInWithEmailAndPassword(email, password);
       state(true);
@@ -25,7 +20,6 @@ function LoginForm({state}) {
       alert("Authentication failed. Please try again.");
     }
   };
-
   return (
     <form onSubmit={handleFormSubmit}>
       <div>
@@ -44,5 +38,4 @@ function LoginForm({state}) {
     </form>
   );
 }
-
-export default LoginForm;
+export default AdmFormLogin;

@@ -29,7 +29,7 @@ const VideoPlayer = ({ car }) => {
             className="video-element"
             src={videos[currentVideo]}
             controls
-            poster={car.mainimages}
+            poster={car.frontimages}
           >
             Your browser does not support the video tag.
           </video>

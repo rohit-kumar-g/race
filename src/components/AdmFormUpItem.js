@@ -3,11 +3,12 @@ import AdmCardinp from "./AdmCardinp";
 import { handleChange, handleChangeArray } from "../myhelper_r/MyFormFun";
 const AdmFormUpItem = ({ carData, onUpdate, isUpdating, onClose }) => {
   const [updatedCarData, setUpdatedCarData] = useState(carData);
-  const details = [
+ const details = [
     "title",
     "year",
     "make",
     "model",
+    "price",
     "exteriorColor",
     "interior",
     "interiorColor",
@@ -40,6 +41,7 @@ const AdmFormUpItem = ({ carData, onUpdate, isUpdating, onClose }) => {
       "year",
       "make",
       "model",
+      "price",
       "exteriorColor",
       "interior",
       "interiorColor",

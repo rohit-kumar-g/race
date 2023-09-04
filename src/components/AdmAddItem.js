@@ -16,16 +16,7 @@ const AdmAddItem = () => {
     year: "",
     make: "",
     model: "",
-    spec1: [],
-    spec2: [],
-    spec3: [],
-    spec4: [],
-    spec5: [],
-    spec6: [],
-    spec7: [],
-    spec8: [],
-    spec9: [],
-    spec10: [],
+    price: "",
     exteriorColor: "",
     interior: "",
     interiorColor: "",
@@ -43,6 +34,16 @@ const AdmAddItem = () => {
     videos: [],
     frontimages: [],
     images: [],
+    spec1: [],
+    spec2: [],
+    spec3: [],
+    spec4: [],
+    spec5: [],
+    spec6: [],
+    spec7: [],
+    spec8: [],
+    spec9: [],
+    spec10: [],
   };
   const spec = [
     "spec1",
@@ -61,6 +62,7 @@ const AdmAddItem = () => {
     "year",
     "make",
     "model",
+    "price",
     "exteriorColor",
     "interior",
     "interiorColor",
@@ -82,65 +84,6 @@ const AdmAddItem = () => {
   const [isUploading, setIsUploading] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const formRef = useRef();
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setCarData((prevData) => ({
-  //     ...prevData,
-  //     [name]: value,
-  //   }));
-  // };
-  // const handleChangeArray = (e) => {
-  //   const { name, value } = e.target;
-  //   let arr = value.split(",");
-  //   let arr2 = [];
-  //   arr.forEach((i) => {
-  //     i.replace(/^\s+|\s+$/gm, "");
-  //     if (i.length > 1) {
-  //       let text = i.charAt(0).toUpperCase() + i.slice(1);
-  //       arr2.push(text);
-  //     }
-  //   });
-  //   setCarData((prevData) => ({
-  //     ...prevData,
-  //     [name]: arr2,
-  //   }));
-  // };
-  // const handleFileUpload = (files, field ,timeer) => {
-  //   return new Promise(async (resolve, reject) => {
-  //     const uploadedImages = [];
-  //     for (const file of files) {
-  //       // let i = 1;
-  //       try {
-  //         const uploadTask = firestorage
-  //           .ref(`${timeer}/${field}/${file.name}`)
-  //           .put(file);
-  //         uploadTask.on(
-  //           "state_changed",
-  //           (snapshot) => {
-  //             const progress = Math.round(
-  //               (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-  //             );
-  //             setImageUploadProgress(progress);
-  //             // i++;
-  //             // console.log("Uploaded", file.name, i);
-  //           },
-  //           (error) => {
-  //             // console.error("Error uploading image:", error);
-  //             reject(error);
-  //           }
-  //         );
-  //         await uploadTask;
-  //         const downloadURL = await uploadTask.snapshot.ref.getDownloadURL();
-  //         uploadedImages.push(downloadURL);
-  //       } catch (error) {
-  //         // console.error("Error uploading image:", error);
-  //         reject(error);
-  //       }
-  //     }
-  //     setImageUploadProgress(0);
-  //     resolve(uploadedImages);
-  //   });
-  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);

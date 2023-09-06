@@ -6,7 +6,6 @@ const MyProductReducer = (state, action) => {
         ...state,
         grid_view: true,
       };
-
     case "SET_LIST_VIEW":
       return {
         ...state,
@@ -17,14 +16,13 @@ const MyProductReducer = (state, action) => {
         ...state,
         filter_view: action.payload,
       };
-
     case "SET_LOADING":
       return {
         ...state,
         isLoading: true,
       };
     case "SET_FILTER_DATA":
-      const color = UnqVals4K(action.payload, "color");
+      const exteriorColor = UnqVals4K(action.payload, "exteriorColor");
       const model = UnqVals4K(action.payload, "model");
       const year = UnqVals4K(action.payload, "year");
       const make = UnqVals4K(action.payload, "make");
@@ -33,7 +31,7 @@ const MyProductReducer = (state, action) => {
         totalItems: action.payload.length,
         isLoading: false,
         cars: action.payload,
-        color: color,
+        exteriorColor: exteriorColor,
         model: model,
         year: year,
         make: make,

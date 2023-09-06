@@ -3,7 +3,7 @@ import { ProductFilterStyled } from "../styles/AllStyles";
 import LoanCalc from "../pages/LoanCalc";
 import MultiSelectfilter from "../components/CardMultiSelectFilter";
 import { useMyProductContext } from "../myhelper_r/context/MyProductcontext";
-const ProductFilter = ({ color, year, make, model }) => {
+const ProductFilter = ({ exteriorColor, year, make, model }) => {
   // const handleSelectionChange = (selectedOptions) => {
   //   // console.log("Selected options:", selectedOptions);
   // };
@@ -31,9 +31,9 @@ const ProductFilter = ({ color, year, make, model }) => {
           options={model}
         />
         <MultiSelectfilter
-          fieldName={"color"}
+          fieldName={"exteriorColor"}
           filter_title={"Colour"}
-          options={color}
+          options={exteriorColor}
         />
         <LoanCalc />
       </div>

@@ -15,7 +15,7 @@ const CarList = () => {
     grid_view,
     filter_view,
     // cars,
-    color,
+    exteriorColor,
     make,
     model,
     year,
@@ -40,7 +40,12 @@ const CarList = () => {
               : "inv_veh_filter_menu"
           }
         >
-          <ProductFilter color={color} year={year} make={make} model={model} />
+          <ProductFilter
+            exteriorColor={exteriorColor}
+            year={year}
+            make={make}
+            model={model}
+          />
         </div>
         <div className="inv_Menu_List_OR_Grid">
           <ViewInvMenu />

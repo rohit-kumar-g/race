@@ -40,8 +40,8 @@ const CardList = ({ car, index }) => {
                   <div className="info_data">{car.driveTrain}</div>
                 )}
                 {/* {car.stock && <div className="info_data">{car.stock}</div>} */}
-                {/* {car.color && (
-                  <div className="info_data">{car.color} Exterior</div>
+                {/* {car.exteriorColor && (
+                  <div className="info_data">{car.exteriorColor} Exterior</div>
                 )}
                 {car.interiorColor && (
                   <div className="info_data">{car.interiorColor} Interior</div>

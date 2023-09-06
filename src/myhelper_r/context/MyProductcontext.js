@@ -4,7 +4,7 @@ import { getCarData } from "../MyFirebaseConfig";
 import MyProductReducer from "../reducer/MyProductReducer";
 const MyProductsContext = createContext();
 const initialState = {
-  color: [],
+  exteriorColor: [],
   cars: [],
   model: [],
   make: [],

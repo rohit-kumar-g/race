@@ -43,7 +43,9 @@ const ViewerImage = ({ car }) => {
             onClick={() => handleImageClick(index)} // Handle click to enter fullscreen
           >
             <img
-              className="about_car_img"
+              className={`${
+                fullscreen ? "fullscreen_about_car" : "about_car_img"
+              }`}
               src={image}
               alt={`Imagfe ${index}`}
             />

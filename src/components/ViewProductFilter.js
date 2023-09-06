@@ -18,22 +18,22 @@ const ProductFilter = ({ exteriorColor, year, make, model }) => {
         <MultiSelectfilter
           fieldName={"year"}
           filter_title={"Year"}
-          options={year}
+          options={year.sort()}
         />
         <MultiSelectfilter
           fieldName={"make"}
           filter_title={"Make"}
-          options={make}
+          options={make.sort()}
         />
         <MultiSelectfilter
           fieldName={"model"}
           filter_title={"Model"}
-          options={model}
+          options={mode.sort()l}
         />
         <MultiSelectfilter
           fieldName={"exteriorColor"}
           filter_title={"Colour"}
-          options={exteriorColor}
+          options={exteriorColor.sort()}
         />
         <LoanCalc />
       </div>

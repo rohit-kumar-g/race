@@ -1,34 +1,17 @@
-import React, { useState, useEffect } from "react";
-import { BsArrowsFullscreen, BsFullscreenExit } from "react-icons/bs";
+import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import { LightgalleryProvider, LightgalleryItem } from "react-lightgallery";
 import "./ViewerImage.css";
 import "lightgallery.js/dist/css/lightgallery.css";
 const ViewerImage = ({ car }) => {
-  const [fullscreen, setFullscreen] = useState(false);
-  const toggleFullscreen = () => {
-    setFullscreen(!fullscreen);
-  };
-  useEffect(() => {
-    if (fullscreen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [fullscreen]);
-  // const centerSlidePercentage = fullscreen ? 60 : 40;
-  const [visible, setVisible] = useState(true);
   return (
-    <div className={`viewer-image ${fullscreen ? "fullscreen" : ""}`}>
+    <div>
       <div className="content">
         <LightgalleryProvider>
           <Carousel
             swipeable={true}
             infiniteLoop={true}
-            showThumbs={fullscreen}
+            showThumbs={false}
             autoPlay={true}
             autoPlaySpeed={5000}
             centerSlidePercentage={40}
@@ -39,6 +22,7 @@ const ViewerImage = ({ car }) => {
               <LightgalleryItem key={idx} group="group2" src={p}>
                 <img
                   src={p}
+                  alt="Buy Now"
                   style={{
                     aspectRatio: "4/3",
                     maxWidth: "575px",

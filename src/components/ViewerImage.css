@@ -1,0 +1,31 @@
+/* Styles for the main ViewerImage component */
+.viewer-image {
+    position: relative;
+}
+/* Styles for the fullscreen mode */
+.viewer-image.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Dark background overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* Ensure the fullscreen component appears on top */
+}
+/* Style for the fullscreen toggle button */
+.fullscreen-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 24px;
+    color: white;
+    z-index: 2000;
+    padding: 2rem;
+    /* Ensure the button appears on top */
+}

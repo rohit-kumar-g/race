@@ -747,10 +747,10 @@ export const ProductFilterStyled = styled.div`
   background: ${({ theme }) => theme.colors.bgnav};
   display: flex;
   flex-direction: column;
-  h2 {
-    color: ${({ theme }) => theme.colors.xtnav1};
-    padding: 1.5rem 0 0 2.5rem;
-    font-size: 2.3rem;
+  .filter-title {
+    color: ${({ theme }) => theme.colors.text};
+    padding: 1.5rem 2.5rem;
+    font-size: 3.2rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: clip;
@@ -798,16 +798,16 @@ export const CardGridStyled = styled.div`
     }
   }
   .con_title {
-    color: ${({ theme }) => theme.colors.xtnav1};
+    /* color: ${({ theme }) => theme.colors.xtnav1}; */
     padding-top: 1rem;
     padding-left: 1rem;
-    font-size: 1.5rem;
+    /* font-size: 1.5rem; */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: clip;
   }
   .info_con {
-    justify-content: center;
+    justify-content: space-around;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -843,9 +843,15 @@ export const CardGridStyled = styled.div`
     overflow: hidden;
   }
   .info_data {
-    font-size: 1.6rem;
+    color: ${({ theme }) => theme.colors.xtfoot3};
+    font-size: 1.4rem;
     padding-left: 1rem;
     margin-top: 1rem;
+    /* font-weight: bold; */
+  }
+  .price_tag {
+    color: ${({ theme }) => theme.colors.text};
+    font-size: 2.4rem;
     font-weight: bold;
   }
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
@@ -948,7 +954,7 @@ export const ViewerVideoStyled = styled.div`
     opacity: 0.4;
     position: absolute;
     margin: 2rem;
-    font-size: 3rem;
+    font-size: 5rem;
     border-radius: 50%;
     padding: 1rem;
     width: 4.5rem;
@@ -1011,6 +1017,20 @@ export const SingleCarStyled = styled.div`
     width: 95%;
     margin: auto;
   }
+  .carousel .control-arrow:before,
+  .carousel.carousel-slider .control-arrow:before {
+    margin: 0 10px !important;
+    display: inline-block;
+    border-top: 20px solid transparent !important;
+    border-bottom: 20px solid transparent !important;
+    content: "";
+  }
+  .carousel .control-next.control-arrow:before {
+    border-left: 25px solid #fff !important;
+  }
+  .carousel .control-prev.control-arrow:before {
+    border-right: 25px solid #fff !important;
+  }
   .fullscreen_viewer {
     overflow: scroll;
     display: flex;
@@ -1023,6 +1043,23 @@ export const SingleCarStyled = styled.div`
     .image_gallary_container {
       height: 100%;
     }
+  }
+  .video-navigation {
+    opacity: 0.4;
+    position: absolute;
+    margin: 2rem;
+    font-size: 5rem;
+    border-radius: 50%;
+    padding: 1rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    display: inline;
+    z-index: 100;
+  }
+  .next {
+    position: relative;
+    top: 10rem;
+    color: #000;
   }
   .chg_gall {
     opacity: 0.4;
@@ -1038,14 +1075,14 @@ export const SingleCarStyled = styled.div`
     margin-left: 2rem;
     cursor: pointer;
     color: ${({ theme }) => theme.colors.xtnav1};
-    border: 3px solid ${({ theme }) => theme.colors.bgbtn};
+    border: 2px solid ${({ theme }) => theme.colors.bgbtn};
     background: ${({ theme }) => theme.colors.bgnav};
     &:hover,
     &:active {
       opacity: 0.8;
       box-shadow: ${({ theme }) => theme.colors.boxoutshadow};
       transform: scale(0.96);
-      background: ${({ theme }) => theme.colors.xtnav1};
+      background: ${({ theme }) => theme.colors.bgbtn};
       color: ${({ theme }) => theme.colors.bgnav};
     }
     &:content {
@@ -1122,20 +1159,22 @@ export const SingleCarStyled = styled.div`
 `;
 export const MultiSelectDropdownStyled = styled.div`
   .multi_select_filter {
-    width: 95%;
+    width: 90%;
+    margin-inline: auto;
   }
   .filter_header {
-    overflow: hidden;
-    white-space: nowrap;
-    width: 100%;
-    display: inline-flex;
+    display: grid;
+    grid-template-columns: 90% 10%;
     align-items: center;
-    margin: 1rem;
     font-size: 2rem;
+    font-weight: 700;
     justify-content: center;
-    padding: 0.5rem 5rem;
+    padding: 0.5rem;
     color: ${({ theme }) => theme.colors.xtnav1};
-    border: 3px solid ${({ theme }) => theme.colors.bgbtn};
+    border-top: ${({ theme }) => theme.colors.bdrbtn1};
+  }
+  .filter_content {
+    margin-block: 1rem;
   }
   .options {
     width: 100%;
@@ -1144,14 +1183,14 @@ export const MultiSelectDropdownStyled = styled.div`
     margin-left: 1rem;
   }
   .option {
-    background: ${({ theme }) => theme.colors.xtnav1};
+    background: ${({ theme }) => theme.colors.xtnav2};
     color: ${({ theme }) => theme.colors.bgnav};
     display: inline;
     border-radius: 1rem;
     text-align: center;
-    padding: 1rem;
+    padding: 0.5rem;
     margin: 0.5rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
   }
   .filter_actions {
     text-align: center;
@@ -1166,7 +1205,7 @@ export const MultiSelectDropdownStyled = styled.div`
   .selected {
     background: ${({ theme }) => theme.colors.bgbtn};
     color: ${({ theme }) => theme.colors.bgnav};
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     /* border: 3px solid ${({ theme }) => theme.colors.bgnav}; */
   }
 `;

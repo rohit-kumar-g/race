@@ -1,108 +1,54 @@
-import React, { useState, useRef, useEffect } from "react";
-import { ViewerImageStyled } from "../styles/AllStyles";
+import React, { useState, useEffect } from "react";
 import { BsArrowsFullscreen, BsFullscreenExit } from "react-icons/bs";
-
+import { Carousel } from "react-responsive-carousel";
+import "./ViewerImage.css"; // Import your CSS styles for fullscreen
 const ViewerImage = ({ car }) => {
-  const fullscreenRef = useRef(null);
-  const [isFullScreen, setIsFullScreen] = useState(false);
-
-  const goFullScreen = () => {
-    const elem = fullscreenRef.current;
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-    } else if (elem.mozRequestFullScreen) {
-      elem.mozRequestFullScreen();
-    } else if (elem.webkitRequestFullscreen) {
-      elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) {
-      elem.msRequestFullscreen();
+  const [fullscreen, setFullscreen] = useState(false);
+  // const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const toggleFullscreen = () => {
+    setFullscreen(!fullscreen);
+  };
+  const handleImageClick = (index) => {
+    if (!fullscreen) {
+      // setCurrentImageIndex(index);
+      toggleFullscreen();
     }
-    setIsFullScreen(true);
   };
-
-  const exitFullScreen = () => {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
-    }
-    setIsFullScreen(false);
-  };
-
-  const handleFullScreenChange = () => {
-    const fullscreenElement =
-      document.fullscreenElement ||
-      document.mozFullScreenElement ||
-      document.webkitFullscreenElement ||
-      document.msFullscreenElement;
-    setIsFullScreen(!!fullscreenElement);
-  };
-
   useEffect(() => {
-    document.addEventListener("fullscreenchange", handleFullScreenChange, {
-      passive: true,
-    });
-    document.addEventListener("mozfullscreenchange", handleFullScreenChange, {
-      passive: true,
-    });
-    document.addEventListener(
-      "webkitfullscreenchange",
-      handleFullScreenChange,
-      { passive: true }
-    );
-    document.addEventListener("msfullscreenchange", handleFullScreenChange, {
-      passive: true,
-    });
-
+    if (fullscreen) {
+      document.body.style.overflow = "hidden"; // Disable body scrolling in fullscreen mode
+    } else {
+      document.body.style.overflow = "auto"; // Enable body scrolling when exiting fullscreen
+    }
     return () => {
-      document.removeEventListener("fullscreenchange", handleFullScreenChange);
-      document.removeEventListener(
-        "mozfullscreenchange",
-        handleFullScreenChange
-      );
-      document.removeEventListener(
-        "webkitfullscreenchange",
-        handleFullScreenChange
-      );
-      document.removeEventListener(
-        "msfullscreenchange",
-        handleFullScreenChange
-      );
+      document.body.style.overflow = "auto"; // Ensure body scrolling is enabled when component unmounts
     };
-  }, []);
-
+  }, [fullscreen]);
+  const centerSlidePercentage = fullscreen ? 60 : 40; // Adjust the centerSlidePercentage based on fullscreen
   return (
-    <ViewerImageStyled>
-      <div
-        ref={fullscreenRef}
-        className={`viewer-image ${isFullScreen ? "fullscreen_viewer" : ""}`}
+    <div className={`viewer-image ${fullscreen ? "fullscreen" : ""}`}>
+      <Carousel
+        swipeable={true}
+        infiniteLoop={true}
+        showThumbs={fullscreen}
+        autoPlay={true}
+        autoPlaySpeed={5000}
+        centerSlidePercentage={centerSlidePercentage}
+        centerMode={true}
       >
-        <div className="image_gallary_container">
-          {car.images &&
-            car.images.map((imageUrl, index) => (
-              <img
-                key={index}
-                src={imageUrl}
-                alt=""
-                className="image_gallary_item"
-              />
-            ))}
-        </div>
-        <div className="bottom_btn">
-          <div></div>
-          {isFullScreen ? (
-            <BsFullscreenExit onClick={exitFullScreen} />
-          ) : (
-            <BsArrowsFullscreen onClick={goFullScreen} />
-          )}
-        </div>
+        {car.images.map((image, index) => (
+          <div
+            key={index}
+            onClick={() => handleImageClick(index)} // Handle click to enter fullscreen
+          >
+            <img src={image} alt={`Imagfe ${index}`} />
+          </div>
+        ))}
+      </Carousel>
+      <div className="fullscreen-toggle" onClick={toggleFullscreen}>
+        {fullscreen ? <BsFullscreenExit /> : <BsArrowsFullscreen />}
       </div>
-    </ViewerImageStyled>
+    </div>
   );
 };
-
 export default ViewerImage;

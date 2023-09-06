@@ -1,4 +1,5 @@
 import React from "react";
+import { FaAngleRight, FaAngleUp } from "react-icons/fa";
 import { MultiSelectDropdownStyled } from "../styles/AllStyles";
 import { useMyFilterContext } from "../myhelper_r/context/MyFilterContext";
 const MultiSelectfilter = ({ fieldName, filter_title, options }) => {
@@ -18,7 +19,8 @@ const MultiSelectfilter = ({ fieldName, filter_title, options }) => {
     <MultiSelectDropdownStyled>
       <div className="multi_select_filter">
         <div className="filter_header" onClick={() => handleToggle(fieldName)}>
-          {filter_title} {isOpen[fieldName] ? "▼" : "▶"}
+          <div>{filter_title}</div>
+          <div>{isOpen[fieldName] ? <FaAngleUp /> : <FaAngleRight />}</div>
         </div>
         {isOpen[fieldName] && (
           <div className="filter_content">

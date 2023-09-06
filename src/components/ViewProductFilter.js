@@ -14,7 +14,7 @@ const ProductFilter = ({ color, year, make, model }) => {
         <div className="close_filter_view" onClick={setFilterView}>
           Done
         </div>
-        <h2>Filters</h2>
+        <h2 className="filter-title">Find Your Car</h2>
         <MultiSelectfilter
           fieldName={"year"}
           filter_title={"Year"}

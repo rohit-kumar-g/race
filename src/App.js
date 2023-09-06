@@ -13,7 +13,7 @@ import Footer from "./components/Footer";
 import SingleCar from "./pages/SingleCar";
 import Warranty from "./pages/Warranty";
 import { useMyProductContext } from "./myhelper_r/context/MyProductcontext";
-const Admin =React.lazy(() => import ("./pages/Admin"));
+const Admin = React.lazy(() => import("./pages/Admin"));
 function App() {
   const themeday = {
     colors: {
@@ -25,7 +25,7 @@ function App() {
       bginputbox2: "#f0f1f8",
       bgbtn: "rgb(24,119,242)",
       xtnav1: "#576b95",
-      xtnav2: "rgb(24,119,242)",
+      xtnav2: "rgb(13 ,72 ,147 ,0.5)",
       xtbtn: "#fff",
       bgformleft: "#afafb6",
       xtform2: "#576b95",
@@ -33,7 +33,7 @@ function App() {
       xtheading: "#1c1e21",
       text: "#4d5156",
       bdrline2: "2px solid #dadde1",
-      bdrbtn1: "2px solid #bec3c9",
+      bdrbtn1: "1px solid #bec3c9",
       shdnavbotm: "0px 2px 6.5px #888888",
       boxoutshadow: "0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1)",
       shdbtnxt: "0 -1px rgba(0, 0, 0, .25)",
@@ -46,7 +46,7 @@ function App() {
       tab: "998px",
     },
   };
-  const { filter_view} =useMyProductContext();
+  const { filter_view } = useMyProductContext();
   return (
     <ThemeProvider theme={themeday}>
       <BrowserRouter>

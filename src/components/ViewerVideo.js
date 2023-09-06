@@ -1,29 +1,25 @@
 import React, { useState } from "react";
 import { ViewerVideoStyled } from "../styles/AllStyles";
-import { IoChevronForwardOutline, IoChevronBackOutline } from "react-icons/io5";
-
+import { TbCircleChevronLeft, TbCircleChevronRight } from "react-icons/tb";
 const VideoPlayer = ({ car }) => {
   const [currentVideo, setCurrentVideo] = useState(0);
   const videos = car.videos || []; // Add your video URLs here
-
   const handlePrevious = () => {
     setCurrentVideo((prevVideo) =>
       prevVideo === 0 ? videos.length - 1 : prevVideo - 1
     );
   };
-
   const handleNext = () => {
     setCurrentVideo((prevVideo) =>
       prevVideo === videos.length - 1 ? 0 : prevVideo + 1
     );
   };
-
   return (
     <ViewerVideoStyled>
       <div className="video-player">
-        <button className="video-navigation prev" onClick={handlePrevious}>
-          <IoChevronBackOutline />
-        </button>
+        <div className="video-navigation prev">
+          <TbCircleChevronLeft onClick={handlePrevious} />
+        </div>
         {videos.length > 0 ? (
           <video
             className="video-element"
@@ -36,12 +32,11 @@ const VideoPlayer = ({ car }) => {
         ) : (
           <div className="video-element">No videos available.</div>
         )}
-        <button className="video-navigation next" onClick={handleNext}>
-          <IoChevronForwardOutline />
-        </button>
+        <div className="video-navigation next">
+          <TbCircleChevronRight onClick={handleNext} />
+        </div>
       </div>
     </ViewerVideoStyled>
   );
 };
-
 export default VideoPlayer;

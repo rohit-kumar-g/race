@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../styles/AllStyles";
-import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
 import { FooterStyledWrap } from "../styles/AllStyles";
 import { NavLink } from "react-router-dom";
 const Footer = () => {
@@ -11,13 +11,14 @@ const Footer = () => {
           <div className="container">
             <h3> About us</h3>
             <p>
-              Your trusted used car dealership  for Quality Vehicle and Exceptional Service
+              Your trusted used car dealership for Quality Vehicle and
+              Exceptional Service
             </p>
           </div>
           <div id="item2" className="container">
             <h3>Follow Us</h3>
             <div className="footer-social--icons">
-              <div>
+              {/* <div>
                 <a href="https://www.facebook.com/marketplace/profile/100092029053941/?ref=permalink&mibextid=6ojiHh">
                   <FaTwitter className="icons" />
                 </a>
@@ -26,10 +27,10 @@ const Footer = () => {
                 <a href="https://www.facebook.com/marketplace/profile/100092029053941/?ref=permalink&mibextid=6ojiHh">
                 <FaInstagram className="icons" />
                 </a>
-              </div>
+              </div> */}
               <div>
-                <a  href="https://www.facebook.com/marketplace/profile/100092029053941/?ref=permalink&mibextid=6ojiHh">
-                <FaYoutube className="icons" />
+                <a href="https://www.facebook.com/marketplace/profile/100092029053941/?ref=permalink&mibextid=6ojiHh">
+                  <FaFacebook className="icons" />
                 </a>
               </div>
             </div>

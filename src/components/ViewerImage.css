@@ -1,31 +1,91 @@
-/* Styles for the main ViewerImage component */
-.viewer-image {
+/* ImageCarousel.css */
+.image-carousel {
     position: relative;
 }
-/* Styles for the fullscreen mode */
-.viewer-image.fullscreen {
+.carousel-container {
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding: 8px;
+    max-height: 80vh;
+    /* Limit the maximum height of the carousel */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.carousel-slide {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+.carousel-slide img {
+    max-width: 100%;
+    height: auto;
+}
+.carousel-slide.active {
+    transform: scale(1.1);
+    z-index: 1;
+}
+.fullscreen-overlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.9);
-    /* Dark background overlay */
+    background: rgba(0, 0, 0, 0.7);
     display: flex;
-    justify-content: center;
     align-items: center;
-    z-index: 1000;
-    /* Ensure the fullscreen component appears on top */
-}
-/* Style for the fullscreen toggle button */
-.fullscreen-toggle {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    justify-content: center;
+    z-index: 100;
     cursor: pointer;
-    font-size: 24px;
-    color: white;
-    z-index: 2000;
-    padding: 2rem;
-    /* Ensure the button appears on top */
+}
+.fullscreen-image-container {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+.fullscreen-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+.prev-button,
+.next-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    padding: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.prev-button {
+    left: 16px;
+}
+.next-button {
+    right: 16px;
+}
+.zoom-controls {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-radius: 4px;
+}
+.zoom-in,
+.zoom-out {
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+.zoom-in:hover,
+.zoom-out:hover {
+    background: rgba(0, 0, 0, 0.2);
 }

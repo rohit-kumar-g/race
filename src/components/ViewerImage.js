@@ -35,13 +35,18 @@ const ViewerImage = ({ car }) => {
         autoPlaySpeed={5000}
         centerSlidePercentage={centerSlidePercentage}
         centerMode={true}
+        showIndicators={false}
       >
         {car.images.map((image, index) => (
           <div
             key={index}
             onClick={() => handleImageClick(index)} // Handle click to enter fullscreen
           >
-            <img src={image} alt={`Imagfe ${index}`} />
+            <img
+              className="about_car_img"
+              src={image}
+              alt={`Imagfe ${index}`}
+            />
           </div>
         ))}
       </Carousel>

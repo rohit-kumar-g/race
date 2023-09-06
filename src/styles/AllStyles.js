@@ -1117,6 +1117,9 @@ export const SingleCarStyled = styled.div`
     padding: 0.5rem 2rem;
     font-weight: 600;
   }
+  .about_car_img {
+    height: 400px;
+  }
   .title_spec {
     font-size: 2.4rem;
     padding: 1rem 2rem;

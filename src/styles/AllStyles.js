@@ -1044,6 +1044,11 @@ export const SingleCarStyled = styled.div`
       height: 100%;
     }
   }
+  .slide img.fullscreen_about_car {
+    min-width: 70%;
+    aspect-ratio: 4/3;
+    max-height: 90%;
+  }
   .video-navigation {
     opacity: 0.4;
     position: absolute;

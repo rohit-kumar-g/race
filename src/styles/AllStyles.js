@@ -1032,7 +1032,7 @@ export const SingleCarStyled = styled.div`
     border-right: 25px solid #fff !important;
   }
   .fullscreen_viewer {
-    overflow: scroll;
+    overflow-x: scroll;
     display: flex;
     flex-direction: column;
     -ms-overflow-style: none;
@@ -1055,11 +1055,6 @@ export const SingleCarStyled = styled.div`
     height: 4.5rem;
     display: inline;
     z-index: 100;
-  }
-  .next {
-    position: relative;
-    top: 10rem;
-    color: #000;
   }
   .chg_gall {
     opacity: 0.4;

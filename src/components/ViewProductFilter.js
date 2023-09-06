@@ -28,7 +28,7 @@ const ProductFilter = ({ exteriorColor, year, make, model }) => {
         <MultiSelectfilter
           fieldName={"model"}
           filter_title={"Model"}
-          options={mode.sort()l}
+          options={model.sort()}
         />
         <MultiSelectfilter
           fieldName={"exteriorColor"}

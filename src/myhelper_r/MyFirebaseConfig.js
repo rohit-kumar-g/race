@@ -2,23 +2,23 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/storage";
 import "firebase/compat/auth";
-// const firebaseConfig = {
-//   apiKey: process.env.REACT_APP_API_KEY,
-//   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-//   projectId: process.env.REACT_APP_PROJECT_ID,
-//   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-//   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-//   appId: process.env.REACT_APP_APP_ID,
-// };
 const firebaseConfig = {
-  apiKey: "AIzaSyDu69s2Vg1TrGU3z_NiaSK_RmGJmmIq0xo",
-  authDomain: "race-5ed0a.firebaseapp.com",
-  databaseURL: "https://race-5ed0a-default-rtdb.firebaseio.com",
-  projectId: "race-5ed0a",
-  storageBucket: "race-5ed0a.appspot.com",
-  messagingSenderId: "262961717923",
-  appId: "1:262961717923:web:8a272993a78999ad091516",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
 };
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDu69s2Vg1TrGU3z_NiaSK_RmGJmmIq0xo",
+//   authDomain: "race-5ed0a.firebaseapp.com",
+//   databaseURL: "https://race-5ed0a-default-rtdb.firebaseio.com",
+//   projectId: "race-5ed0a",
+//   storageBucket: "race-5ed0a.appspot.com",
+//   messagingSenderId: "262961717923",
+//   appId: "1:262961717923:web:8a272993a78999ad091516",
+// };
 export const firebaser = firebase.initializeApp(firebaseConfig);
 export const firestore = firebase.firestore();
 export const firestorage = firebase.storage();

@@ -17,12 +17,12 @@ const VisitUs = () => {
               <h2>Sunday</h2>
             </div>
             <div className="time">
-              <h2>10:00am-7:00pm</h2>
-              <h2>10:00am-7:00pm</h2>
-              <h2>10:00am-7:00pm</h2>
-              <h2>10:00am-7:00pm</h2>
-              <h2>10:00am-7:00pm</h2>
-              <h2>10:00am-7:00pm</h2>
+              <h2>08:00am-06:00pm</h2>
+              <h2>10:00am-07:00pm</h2>
+              <h2>08:00am-06:00pm</h2>
+              <h2>10:00am-07:00pm</h2>
+              <h2>08:00am-06:00pm</h2>
+              <h2>10:00am-07:00pm</h2>
               <h2>closed</h2>
             </div>
           </div>

@@ -22,7 +22,7 @@ const LoanCalc = () => {
   return (
     <EmiCalculatorStyled>
       <div className="emicard">
-        <h2>EMI Calculator</h2>
+        <h2>Payment Calculator</h2>
         <div className="emi-input">
           <label>Principal Amount:</label>
           <input

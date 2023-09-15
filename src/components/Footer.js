@@ -22,21 +22,22 @@ const Footer = () => {
                 <a href="https://www.facebook.com/marketplace/profile/100092029053941/?ref=permalink&mibextid=6ojiHh">
                   <FaTwitter className="icons" />
                 </a>
-              </div>
-              <div>
-                <a href="https://www.facebook.com/marketplace/profile/100092029053941/?ref=permalink&mibextid=6ojiHh">
-                <FaInstagram className="icons" />
-                </a>
               </div> */}
+              
               <div>
                 <a href="https://www.facebook.com/marketplace/profile/100092029053941/?ref=permalink&mibextid=6ojiHh">
                   <FaFacebook className="icons" />
                 </a>
               </div>
+              <div>
+                <a href="https://www.instagram.com/racemotors">
+                <FaInstagram className="icons" />
+                </a>
+              </div>
             </div>
             <h3>Call Us</h3>
             <Button>
-              <a href="tel:+19793267763"> 979 326 7763</a>
+              <a href="tel:+19793267763">281-372-9238</a>
             </Button>
           </div>
           {/* <div className="container">

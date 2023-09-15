@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../styles/AllStyles";
-import { FaFacebook } from "react-icons/fa";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { FooterStyledWrap } from "../styles/AllStyles";
 import { NavLink } from "react-router-dom";
 const Footer = () => {
@@ -37,7 +37,7 @@ const Footer = () => {
             </div>
             <h3>Call Us</h3>
             <Button>
-              <a href="tel:+19793267763">281-372-9238</a>
+              <a href="tel:+12813729238">281-372-9238</a>
             </Button>
           </div>
           {/* <div className="container">

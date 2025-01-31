@@ -2,8 +2,13 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { CgMenu, CgClose } from "react-icons/cg";
 import { NavXtStyled } from "../styles/AllStyles";
+import YouTubeEmbedder from "../pages/Aextyt";
 const NavListXt = () => {
   const [menuIcon, setMenuIcon] = useState();
+  const [showEmbedder, setShowEmbedder] = useState(false);
+  const handleClick = () => {
+    setShowEmbedder((prev) => !prev); // Toggle visibility
+  };
   const [isOpen, setIsOpen] = useState(false);
   const handle2click = () => {
     setIsOpen(false);
@@ -88,10 +93,20 @@ const NavListXt = () => {
                     Contact
                   </NavLink>
                 </li>
+                <li onClick={handleClick} >
+          <h3> Testimonials</h3>
+        </li>
               </ul>
             )}
           </li>
         </ul>
+
+        {/* dfvsdf */}
+        {showEmbedder && (
+        <div className="mt-4">
+          <YouTubeEmbedder />
+        </div>
+      )}
         {/* two button for open and close of menu */}
         <div className="mobile-navbar-btn">
           <div
